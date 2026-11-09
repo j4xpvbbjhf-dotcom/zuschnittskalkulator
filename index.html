@@ -291,7 +291,10 @@
         <div class="field"><input type="number" id="sTol" min="0" step="0.01" inputmode="decimal"><span class="unit">m²</span></div>
         <p class="hint">Zwei Pläne mit gleicher Plattenzahl: liegt der Unterschied beim größten Rest unter diesem Wert, gilt der Rest als gleich und der Plan mit weniger Schnitten gewinnt. Vorläufiger Wert, endgültige Zahl ausständig.</p>
       </section>
-      <p class="status" id="sStatus"></p>
+      <div class="actions" style="margin-top:0">
+        <button type="button" class="btn btn-primary" id="btnUebernehmen">Übernehmen</button>
+      </div>
+      <p class="status" id="sStatus">Änderungen gelten sofort für die Rechnung. Mit Übernehmen bleiben sie auch beim nächsten Öffnen erhalten.</p>
       <div><button type="button" class="link" id="btnStandard">Auf Standardwerte zurücksetzen</button></div>
     </div>
   </div>
@@ -328,6 +331,7 @@
       <section>
         <h3>09.11.2026</h3>
         <ul>
+          <li>Knopf Übernehmen in den Einstellungen. Geänderte Werte gelten sofort, gespeichert werden sie erst mit Übernehmen. Beim Schließen mit offenen Änderungen fragt der Browser nach.</li>
           <li>Als Website veröffentlicht, nutzbar am Home Bildschirm und offline.</li>
           <li>Schlichte Kopfzeile und gelbes App Icon.</li>
         </ul>
@@ -1270,11 +1274,20 @@
     $('sBesaeum').value = S.besaeum; $('sKerf').value = S.kerf; $('sMin').value = S.minTeil; $('sDrehen').checked = !!S.drehen;
     $('sFugen').checked = !!S.fugen; $('sFugenAbstand').value = S.fugenAbstand; $('sRest').value = S.restMin; $('sTol').value = S.restTol;
   }
+  // Änderungen gelten sofort für die Rechnung. Gespeichert wird erst mit Übernehmen.
+  let sOffen = false;
   function sSichern() {
-    const ok = sichern(KEY_S, S);
-    $('sStatus').textContent = ok ? 'Gespeichert in diesem Browser.' : 'Konnte nicht gespeichert werden, der Browser erlaubt keinen Speicher.';
+    sOffen = true;
+    $('sStatus').textContent = 'Geändert, noch nicht übernommen. Ohne Übernehmen gehen die Änderungen beim Schließen verloren.';
     regelnText(); spaeter();
   }
+  function sUebernehmen() {
+    const ok = sichern(KEY_S, S);
+    if (ok) sOffen = false;
+    $('sStatus').textContent = ok ? 'Übernommen. Die Einstellungen gelten auch beim nächsten Öffnen in diesem Browser.' : 'Konnte nicht gespeichert werden, der Browser erlaubt keinen Speicher.';
+  }
+  $('btnUebernehmen').addEventListener('click', sUebernehmen);
+  window.addEventListener('beforeunload', (e) => { if (sOffen) { e.preventDefault(); e.returnValue = ''; } });
   const zahl = (id, k, min) => $(id).addEventListener('input', () => { S[k] = Math.max(min, Math.round(+$(id).value || 0)); sSichern(); });
   zahl('sBesaeum', 'besaeum', 0); zahl('sKerf', 'kerf', 0); zahl('sMin', 'minTeil', 0); zahl('sFugenAbstand', 'fugenAbstand', 0); zahl('sRest', 'restMin', 1);
   $('sTol').addEventListener('input', () => { S.restTol = Math.max(0, +$('sTol').value || 0); sSichern(); });
