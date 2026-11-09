@@ -1,0 +1,1695 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zuschnittskalkulator</title>
+<meta name="theme-color" content="#FAD201">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Zuschnitt">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAABSElEQVR42u3SMQ0AAAgEsce/O+QwYYCVrUkVXC7TBadIgDkwB+bAHJgDc2AOzIE5MAeYA3NgDsyBOTAH5sAcmANzgDkwB+bAHJgDc2AOzIE5MAeYA3NgDsyBOTAH5sAcmANzYA4wB+bAHJgDc2AOzIE5MAfmAHNgDsyBOTAH5sAcmANzYA4wB+bAHJgDc2AOzIE5MAfmwBxgDsyBOTAH5sAcmANzYA7MAebAHJgDc2AOzIE5MAfmwBxgDsyBOTAH5sAcmANzYA7MgTnAHJgDc2AOzIE5MAfmwByYA8yBOTAH5sAcmANzYA7MgTnAHJgDc2AOzIE5MAfmwByYA3OAOTAH5sAcmANzYA7MgTkwB5gDc2AOzIE5MAfmwByYA3OAOTAH5sAcmANzYA7MgTkwB+YAc2AOzIE5MAfmwByYA3NgDjAH5sAcfFkLXvaegcwRdwAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAABSElEQVR42u3SMQ0AAAgEsce/O+QwYYCVrUkVXC7TBadIgDkwB+bAHJgDc2AOzIE5MAeYA3NgDsyBOTAH5sAcmANzgDkwB+bAHJgDc2AOzIE5MAeYA3NgDsyBOTAH5sAcmANzYA4wB+bAHJgDc2AOzIE5MAfmAHNgDsyBOTAH5sAcmANzYA4wB+bAHJgDc2AOzIE5MAfmwBxgDsyBOTAH5sAcmANzYA7MAebAHJgDc2AOzIE5MAfmwBxgDsyBOTAH5sAcmANzYA7MgTnAHJgDc2AOzIE5MAfmwByYA8yBOTAH5sAcmANzYA7MgTnAHJgDc2AOzIE5MAfmwByYA3OAOTAH5sAcmANzYA7MgTkwB5gDc2AOzIE5MAfmwByYA3OAOTAH5sAcmANzYA7MgTkwB+YAc2AOzIE5MAfmwByYA3NgDjAH5sAcfFkLXvaegcwRdwAAAABJRU5ErkJggg==">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%22Zuschnittskalkulator%22%2C%22short_name%22%3A%22Zuschnitt%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23FFFFFF%22%2C%22theme_color%22%3A%22%23FAD201%22%2C%22lang%22%3A%22de%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fpng%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAABSElEQVR42u3SMQ0AAAgEsce%2FO%2BQwYYCVrUkVXC7TBadIgDkwB%2BbAHJgDc2AOzIE5MAeYA3NgDsyBOTAH5sAcmANzgDkwB%2BbAHJgDc2AOzIE5MAeYA3NgDsyBOTAH5sAcmANzYA4wB%2BbAHJgDc2AOzIE5MAfmAHNgDsyBOTAH5sAcmANzYA4wB%2BbAHJgDc2AOzIE5MAfmwBxgDsyBOTAH5sAcmANzYA7MAebAHJgDc2AOzIE5MAfmwBxgDsyBOTAH5sAcmANzYA7MgTnAHJgDc2AOzIE5MAfmwByYA8yBOTAH5sAcmANzYA7MgTnAHJgDc2AOzIE5MAfmwByYA3OAOTAH5sAcmANzYA7MgTkwB5gDc2AOzIE5MAfmwByYA3OAOTAH5sAcmANzYA7MgTkwB%2BYAc2AOzIE5MAfmwByYA3NgDjAH5sAcfFkLXvaegcwRdwAAAABJRU5ErkJggg%3D%3D%22%2C%22sizes%22%3A%22180x180%22%2C%22type%22%3A%22image%2Fpng%22%7D%5D%7D">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap">
+<style>
+  /* Design System, Werte aus tokens.css vom 12.08.2026 */
+  :root {
+    --na-yellow: #FAD201; --na-black: #000000; --na-night: #081723; --na-white: #FFFFFF;
+    --na-sand: #EAE5D9; --na-forest: #1F523D; --na-navy: #0E2E47; --na-grey: #636262;
+    --na-neutral-300: #CBCBCB; --na-neutral-500: #979797;
+    --na-font: "Jost", "Radikal", "Avenir Next", Futura, ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+    --na-dur: .4s;
+    color-scheme: light;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  html { scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 60px); background: var(--na-white); }
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body {
+    margin: 0; background: var(--na-white); color: var(--na-black);
+    font-family: var(--na-font); font-size: 15px; line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2 { color: var(--na-night); margin: 0; text-wrap: balance; }
+  h1 { font-size: 36px; font-weight: 700; line-height: 1.1; }
+  h2 { font-size: 24px; font-weight: 400; line-height: 1.5; }
+  h3 { font-size: 16px; font-weight: 700; line-height: 1.4; margin: 0; }
+  p { margin: 0; }
+  .rule { border-top: 4px solid var(--na-yellow); height: 7px; width: 44px; margin-bottom: 8px; }
+
+  header.top {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--na-white);
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+    min-height: 54px; padding: 0 24px; border-bottom: 1px solid var(--na-neutral-300);
+  }
+  .wordmark { display: flex; align-items: center; gap: 12px; font-size: 13px; color: var(--na-black); white-space: nowrap; }
+  .wordmark .logo { height: 32px; width: auto; color: var(--na-black); }
+  .wordmark span { font-weight: 400; color: var(--na-grey); }
+  nav.top { display: flex; gap: 18px; min-width: 0; flex-wrap: wrap; }
+  nav.top button {
+    font-family: var(--na-font); font-size: 14px; color: var(--na-black); background: none; border: 0;
+    border-bottom: 3px solid transparent; padding: 14px 0 11px; cursor: pointer; white-space: nowrap;
+  }
+  nav.top button.aktiv { font-weight: 700; border-bottom-color: var(--na-yellow); }
+  @media (max-width: 620px) {
+    header.top { padding: 6px 12px 0; }
+    .wordmark { width: 100%; justify-content: center; }
+    .wordmark .logo { height: 26px; }
+    .wordmark span { display: none; }
+    nav.top { width: 100%; justify-content: space-between; gap: 0 8px; flex-wrap: nowrap; }
+    nav.top button { padding: 10px 0 8px; font-size: 14px; }
+    nav.top #btnPrint { display: none; }
+  }
+
+  .container { max-width: 1000px; margin-inline: auto; padding: 0 24px; }
+  @media (max-width: 620px) { .container { padding: 0 16px; } }
+  .intro { padding: 28px 0 20px; }
+  @media (max-width: 620px) { .intro { padding: 20px 0 16px; } h1 { font-size: 30px; } }
+  .intro p { max-width: 62ch; color: var(--na-night); margin-top: 10px; }
+
+  .layout { display: grid; grid-template-columns: 360px minmax(0, 1fr); gap: 32px; align-items: start; padding-bottom: 96px; }
+  @media (max-width: 880px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+
+  .panel { background: var(--na-sand); padding: 20px; }
+  .panel h3 { margin: 20px 0 8px; }
+  .panel h3:first-child { margin-top: 0; }
+  .group { display: grid; gap: 8px; }
+  label.lbl { font-size: 12px; font-weight: 700; margin-top: 8px; }
+  .pair { display: grid; grid-template-columns: 1fr auto 1fr; gap: 6px; align-items: center; }
+  .x { color: var(--na-grey); text-align: center; }
+  .field { position: relative; }
+  .field input, select.input, input.input, textarea.input {
+    width: 100%; border: 2px solid var(--na-navy); border-radius: 0; background: var(--na-white);
+    font-family: var(--na-font); font-size: 16px; padding: 8px 34px 8px 10px; color: var(--na-black);
+    font-variant-numeric: tabular-nums; -moz-appearance: textfield;
+  }
+  input.input, textarea.input { padding-right: 10px; }
+  textarea.input { min-height: 110px; resize: vertical; line-height: 1.5; }
+  .field input::-webkit-outer-spin-button, .field input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  select.input { padding-right: 30px; appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--na-navy) 50%), linear-gradient(135deg, var(--na-navy) 50%, transparent 50%); background-position: calc(100% - 18px) 55%, calc(100% - 12px) 55%; background-size: 6px 6px; background-repeat: no-repeat; }
+  .field .unit { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 12px; color: var(--na-grey); pointer-events: none; }
+  input:focus-visible, select:focus-visible, button:focus-visible, textarea:focus-visible { outline: 3px solid var(--na-night); outline-offset: 2px; }
+  .hint { font-size: 12px; color: var(--na-grey); line-height: 1.5; }
+  .check { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; }
+  .check input { width: 18px; height: 18px; margin: 4px 0 0; accent-color: var(--na-night); flex: none; }
+  .actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; min-height: 42px; padding: 0 22px;
+    border-radius: 10px; border: 1px solid transparent; font-family: var(--na-font); font-size: 15px;
+    cursor: pointer; transition: background-color var(--na-dur) ease, color var(--na-dur) ease;
+  }
+  .btn-primary { background: var(--na-yellow); color: var(--na-black); }
+  .btn-primary:hover { background: var(--na-black); color: var(--na-yellow); }
+  .btn-secondary { background: var(--na-black); color: var(--na-white); }
+  .btn-secondary:hover { color: var(--na-yellow); }
+  .link { background: none; border: 0; font-family: var(--na-font); font-size: 13px; color: var(--na-navy); cursor: pointer; padding: 4px 0; text-decoration: underline; justify-self: start; }
+  .del { background: none; border: 0; font-size: 20px; line-height: 1; cursor: pointer; color: var(--na-grey); padding: 6px 8px; flex: none; }
+  .del:hover { color: var(--na-black); }
+
+  /* Positionen */
+  .posliste { display: grid; gap: 10px; }
+  .pos { background: var(--na-white); padding: 10px; display: grid; gap: 8px; border-left: 6px solid var(--farbe, var(--na-sand)); }
+  .pos-kopf { display: flex; gap: 8px; align-items: center; }
+  .pos-kopf input { flex: 1; min-width: 0; }
+  .pos-mass { display: grid; grid-template-columns: 1fr auto 1fr 78px; gap: 6px; align-items: center; }
+  .regeln { margin-top: 14px; font-size: 12px; color: var(--na-grey); line-height: 1.6; }
+  details.assump summary { cursor: pointer; font-weight: 700; }
+  details.assump ul { margin-top: 8px; }
+
+  /* Ergebnis */
+  .results { display: grid; grid-template-columns: minmax(0, 1fr); gap: 44px; min-width: 0; }
+  .kpis { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 560px) { .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); } .kpi .v { font-size: 32px; } }
+  .kpi { min-width: 0; border-top: 1px solid var(--na-neutral-300); padding-top: 12px; }
+  .kpi.main { border-top: 4px solid var(--na-yellow); }
+  .kpi .v { font-size: 38px; font-weight: 700; line-height: 1.1; color: var(--na-night); font-variant-numeric: tabular-nums; }
+  .kpi .v small { font-size: 15px; font-weight: 400; color: var(--na-grey); margin-left: 4px; white-space: nowrap; }
+  .kpi .k { font-size: 12px; font-weight: 700; margin-top: 4px; }
+  .kpi .s { font-size: 12px; color: var(--na-grey); line-height: 1.5; }
+  section.block h2 { margin-bottom: 4px; }
+  section.block > p { max-width: 65ch; color: var(--na-night); margin-bottom: 16px; }
+  .drawing { width: 100%; overflow-x: auto; }
+  .drawing svg { display: block; width: 100%; min-width: 320px; height: auto; max-height: 520px; }
+  svg text { font-family: var(--na-font); }
+  .plates, .composites { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .plate-card { display: grid; gap: 8px; }
+  .plate-card h3 { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .plate-card h3 span { font-weight: 400; font-size: 13px; color: var(--na-grey); }
+  .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--na-night); margin-top: 8px; }
+  .legend i { display: inline-block; width: 14px; height: 14px; vertical-align: -2px; margin-right: 6px; border: 1px solid var(--na-navy); }
+  .legend i.rest { background: repeating-linear-gradient(135deg, #fff 0 3px, var(--na-neutral-300) 3px 4px); border-style: dashed; }
+    table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  th, td { text-align: left; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--na-neutral-300); vertical-align: top; }
+  th { font-size: 12px; font-weight: 700; white-space: nowrap; }
+  td.num, th.num { text-align: right; padding-right: 12px; }
+  .tablewrap { overflow-x: auto; }
+  .chip { display: inline-block; min-width: 26px; text-align: center; padding: 0 6px; font-size: 12px; font-weight: 700; border: 1px solid var(--na-navy); background: var(--na-white); white-space: nowrap; }
+  .notes { display: grid; gap: 12px; }
+  .note { border-left: 4px solid var(--na-navy); padding: 4px 0 4px 16px; }
+  .note.warn { border-left-color: var(--na-yellow); }
+  .note .t { font-weight: 700; }
+  .note p { color: var(--na-night); max-width: 65ch; }
+  .empty { color: var(--na-grey); }
+  .assump { background: var(--na-sand); padding: 20px; }
+  .assump ul { margin: 8px 0 0; padding-left: 18px; color: var(--na-night); }
+  .assump li { margin-top: 4px; }
+
+  /* Einstellungen, Notizen, Änderungen */
+  .seite { max-width: 640px; padding-bottom: 96px; display: grid; gap: 28px; }
+  .fmt-zeile { display: grid; grid-template-columns: 1fr 84px auto 84px auto 74px auto; gap: 6px; align-items: center; }
+  @media (max-width: 560px) { .fmt-zeile { grid-template-columns: 1fr auto 1fr auto 1fr auto; } .fmt-zeile .fmt-name { grid-column: 1 / -1; } }
+  .pair3 { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 6px; align-items: center; }
+  .status { font-size: 12px; color: var(--na-grey); }
+  .notiz { border-top: 1px solid var(--na-neutral-300); padding-top: 10px; display: grid; gap: 2px; }
+  .notiz .z { font-size: 12px; color: var(--na-grey); }
+  .notiz p { white-space: pre-wrap; }
+  .log h3 { margin-top: 8px; }
+  .log ul { margin: 6px 0 0; padding-left: 18px; }
+  .log li { margin-top: 4px; }
+
+  /* Abhaken */
+  .schritte { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+  .schritte li label { display: flex; gap: 10px; align-items: flex-start; padding: 6px 0; cursor: pointer; border-bottom: 1px solid var(--na-line); }
+  .schritte input { width: 20px; height: 20px; margin: 3px 0 0; accent-color: var(--na-night); flex: none; }
+  .schritte .erl { color: var(--na-grey); text-decoration: line-through; }
+  .schritte b { font-weight: 700; }
+  .schritte small { display: block; font-size: 12px; color: var(--na-grey); line-height: 1.5; }
+  .schritte small b { color: var(--na-night); }
+  .schritte .rest { color: var(--na-neutral-500); }
+  .fortschritt .link { white-space: nowrap; }
+  .fortschritt { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 13px; color: var(--na-night); background: var(--na-sand); padding: 10px 14px; }
+  .fortschritt .bar { flex: 1; min-width: 120px; height: 6px; background: var(--na-white); }
+  .fortschritt .bar i { display: block; height: 100%; background: var(--na-yellow); }
+  .druckkopf .logo { height: 34px; width: auto; display: block; margin-bottom: 6px; color: #000; }
+  .druckkopf { display: none; font-size: 13px; color: var(--na-night); border-bottom: 1px solid var(--na-neutral-300); padding-bottom: 8px; }
+  .druckkopf b { font-weight: 700; }
+  footer { padding: 32px 0 64px; font-size: 13px; color: var(--na-grey); }
+
+  @media print {
+    header.top, .panel, .actions, footer, .assump, .intro, .fortschritt .link { display: none !important; }
+    .druckkopf { display: block !important; }
+    .layout { grid-template-columns: 1fr; }
+    .drawing svg { max-height: none; min-width: 0; }
+    section.block, .plate-card { break-inside: avoid; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition-duration: .01ms !important; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <span class="wordmark"><b>Zuschnittskalkulator</b><span>Werkstatt</span></span>
+  <nav class="top" aria-label="Bereiche">
+    <button type="button" data-view="calc" class="aktiv">Kalkulator</button>
+    <button type="button" data-view="settings">Einstellungen</button>
+    <button type="button" data-view="notes">Notizen</button>
+    <button type="button" data-view="log">Protokoll</button>
+    <button type="button" id="btnPrint">Drucken</button>
+  </nav>
+</header>
+
+<main class="container">
+  <!-- Kalkulator -->
+  <div id="view-calc">
+    <div class="intro">
+      <div class="rule"></div>
+      <h1>Zuschnitt kalkulieren</h1>
+      <p>Alle Maße in mm.</p>
+    </div>
+    <div class="layout">
+      <div class="panel" id="panel">
+        <h3>Rohplatte</h3>
+        <div class="group">
+          <select class="input" id="format" aria-label="Rohplattenformat"></select>
+          <div class="pair3" id="freiBox" hidden>
+            <div class="field"><input type="number" id="freiL" min="1" step="1" inputmode="numeric" placeholder="Länge" aria-label="Rohplatte Länge"><span class="unit">mm</span></div>
+            <span class="x">×</span>
+            <div class="field"><input type="number" id="freiB" min="1" step="1" inputmode="numeric" placeholder="Breite" aria-label="Rohplatte Breite"><span class="unit">mm</span></div>
+            <span class="x">×</span>
+            <div class="field"><input type="number" id="freiD" min="0" step="1" inputmode="numeric" placeholder="Höhe" aria-label="Rohplatte Höhe"><span class="unit">mm</span></div>
+          </div>
+        </div>
+
+        <h3>Positionen</h3>
+        <div class="posliste" id="posliste"></div>
+        <button type="button" class="link" id="btnPos" style="margin-top:8px">+ Position hinzufügen</button>
+
+        <p class="regeln" id="regeln"></p>
+
+        <div class="actions">
+          <button type="button" class="btn btn-primary" id="btnRechnen">Berechnen</button>
+          <button type="button" class="btn btn-secondary" id="btnLeeren">Leeren</button>
+        </div>
+      </div>
+      <div class="results" id="results"></div>
+    </div>
+  </div>
+
+  <!-- Einstellungen -->
+  <div id="view-settings" hidden>
+    <div class="intro">
+      <div class="rule"></div>
+      <h1>Einstellungen</h1>
+      <p>Diese Werte gelten für jede Rechnung. Die Formate hier erscheinen im Kalkulator zur Auswahl, ein freies Maß ist dort trotzdem immer möglich.</p>
+    </div>
+    <div class="seite">
+      <section class="group">
+        <h3>Rohplattenformate</h3>
+        <p class="hint">Je Format Bezeichnung, Länge × Breite × Höhe. Die Höhe ist nur Kennzeichnung, gerechnet wird mit Länge und Breite.</p>
+        <div id="fmtListe" class="group"></div>
+        <button type="button" class="link" id="btnFmt">+ Format hinzufügen</button>
+      </section>
+      <section class="group">
+        <h3>Schnitt</h3>
+        <label class="lbl" for="sBesaeum">Besäumung rundum</label>
+        <div class="field"><input type="number" id="sBesaeum" min="0" step="1" inputmode="numeric"><span class="unit">mm</span></div>
+        <p class="hint">Randstreifen, der an jeder Kante weggeschnitten wird, damit die Platte rechtwinklig ist. Aus 1200 × 600 werden mit 10 mm 1180 × 580 nutzbar. Festgelegt am 21.09.2026.</p>
+        <label class="lbl" for="sKerf">Schnittzugabe je Schnitt</label>
+        <div class="field"><input type="number" id="sKerf" min="0" step="1" inputmode="numeric"><span class="unit">mm</span></div>
+        <p class="hint">Sägeblattbreite plus Sicherheit. Festgelegt am 21.09.2026 auf 5 mm.</p>
+        <label class="lbl" for="sMin">Mindestmaß eines Teilstücks</label>
+        <div class="field"><input type="number" id="sMin" min="0" step="1" inputmode="numeric"><span class="unit">mm</span></div>
+        <p class="hint">Greift nur, wenn eine Position größer als die Rohplatte ist und aus mehreren Teilstücken zusammengesetzt wird. Kein Teilstück darf dann schmaler sein als dieser Wert. Verhindert unbrauchbare Streifen. 250 mm, festgelegt am 21.09.2026 als Annahme, bei Bedarf senken.</p>
+        <label class="check"><input type="checkbox" id="sDrehen"><span>Teile dürfen gedreht werden<br><span class="hint">Abschalten, wenn Platte oder Bezugsstoff eine Laufrichtung haben.</span></span></label>
+      </section>
+      <section class="group">
+        <h3>Fugen</h3>
+        <label class="check"><input type="checkbox" id="sFugen"><span>Fugen in der Sichtfläche erlaubt<br><span class="hint">Ausgeschaltet geht nur, was aus einer Rohplatte passt. Größere Maße werden abgelehnt.</span></span></label>
+        <label class="lbl" for="sFugenAbstand">Mindestabstand einer Fuge zur Außenkante</label>
+        <div class="field"><input type="number" id="sFugenAbstand" min="0" step="1" inputmode="numeric"><span class="unit">mm</span></div>
+        <p class="hint">Wird derzeit streng gerechnet: jedes Teilstück eines zusammengesetzten Maßes muss mindestens so breit sein.</p>
+      </section>
+      <section class="group">
+        <h3>Reste</h3>
+        <label class="lbl" for="sRest">Reststück gilt als verwertbar ab</label>
+        <div class="field"><input type="number" id="sRest" min="1" step="1" inputmode="numeric"><span class="unit">mm</span></div>
+        <p class="hint">Kürzere Seite des Rests. Kleinere Reste zählen als Verschnitt.</p>
+        <label class="lbl" for="sTol">Resttoleranz</label>
+        <div class="field"><input type="number" id="sTol" min="0" step="0.01" inputmode="decimal"><span class="unit">m²</span></div>
+        <p class="hint">Zwei Pläne mit gleicher Plattenzahl: liegt der Unterschied beim größten Rest unter diesem Wert, gilt der Rest als gleich und der Plan mit weniger Schnitten gewinnt. Vorläufiger Wert, endgültige Zahl ausständig.</p>
+      </section>
+      <p class="status" id="sStatus"></p>
+      <div><button type="button" class="link" id="btnStandard">Auf Standardwerte zurücksetzen</button></div>
+    </div>
+  </div>
+
+  <!-- Notizen -->
+  <div id="view-notes" hidden>
+    <div class="intro">
+      <div class="rule"></div>
+      <h1>Notizen</h1>
+      <p>Rückmeldungen, Fehler, Verbesserungsideen. Alles hier wird gespeichert und später gesichtet. Der Kalkulator selbst liest die Notizen nicht.</p>
+    </div>
+    <div class="seite">
+      <div class="group">
+        <label class="lbl" for="nText">Neue Notiz</label>
+        <textarea class="input" id="nText" placeholder="Was ist aufgefallen?"></textarea>
+        <div class="actions" style="margin-top:4px">
+          <button type="button" class="btn btn-primary" id="btnNotiz">Notiz speichern</button>
+          <button type="button" class="btn btn-secondary" id="btnNotizKopie">Alle als Text kopieren</button>
+        </div>
+        <p class="status" id="nStatus"></p>
+      </div>
+      <div class="group" id="nListe"></div>
+    </div>
+  </div>
+
+  <!-- Änderungen -->
+  <div id="view-log" hidden>
+    <div class="intro">
+      <div class="rule"></div>
+      <h1>Änderungen</h1>
+      <p>Jede Änderung am Kalkulator mit Datum und Grund.</p>
+    </div>
+    <div class="seite log">
+      <section>
+        <h3>21.09.2026</h3>
+        <ul>
+          <li>Mehrere Positionen in einem Lauf. Grund: echte Anfragen haben mehrere Maße, die Reste der einen Position bedienen die andere.</li>
+          <li>Gemeinsame und getrennte Packung werden verglichen, die bessere gewinnt. Grund: das Ergebnis darf nie schlechter sein als die Einzelrechnung.</li>
+          <li>Rangfolge: erst wenigste Rohplatten, bei Gleichstand die größten Reststücke. Grund: Reste sollen für spätere Projekte taugen.</li>
+          <li>Liste der verwertbaren Reste im Ergebnis, Grenze einstellbar, Standard 200 mm.</li>
+          <li>Bereich Einstellungen: Rohplattenformate, Schnittzugabe, Mindestmaß, Drehen, Fugen, Restgrenze. Gespeichert im Browser des Geräts.</li>
+          <li>Schnittzugabe auf 5 mm festgelegt, vorher 0.</li>
+          <li>Besäumung eingebaut, Standard 10 mm. Grund: erst nach dem Randschnitt ist die Platte sicher rechtwinklig.</li>
+          <li>Besäumung bleibt rundum, 1200 × 600 wird 1180 × 580. So festgelegt. Neuer Hinweis, wenn ein Maß nur wegen der Besäumung geteilt wird.</li>
+          <li>Freies Rohplattenmaß im Kalkulator jederzeit möglich.</li>
+          <li>Rohplattenformate mit Dicke, in den Einstellungen und beim freien Maß. Nur Kennzeichnung, die Rechnung bleibt zweidimensional.</li>
+          <li>Bereich Notizen für Rückmeldungen, gespeichert im Browser des Geräts, als Text kopierbar.</li>
+          <li>Fugenabstand zur Außenkante wird vorerst als Mindestmaß aller Teilstücke gerechnet. Strenger als nötig, dafür sicher.</li>
+          <li>Mindestmaß Teilstück auf 250 mm gesetzt, vorher 100. Annahme, bei Bedarf senken.</li>
+          <li>Offen: Formate je Material, Laufrichtung festlegen. Drei Altfälle gegen den echten Verbrauch testen. Handyansicht verfeinern.</li>
+        </ul>
+      </section>
+      <section>
+        <h3>19.09.2026</h3>
+        <ul>
+          <li>Rechenkern v3 für ein Sonderformat je Lauf, geprüft.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="container">
+  <p>Nur gerade, durchgehende Schnitte · Stand 21.09.2026</p>
+</footer>
+<script>
+/* Sonderformate Kalkulator, Rechenkern v3
+   Reine Rechnung, keine Oberfläche. Läuft in Node und im Browser.
+
+   Aufgabe
+   Eine Fertigfläche L x B, n Stück, aus Rohplatten PL x PB.
+   Gesucht ist die Aufteilung in möglichst wenige, möglichst grosse Teilstücke
+   und deren Zuschnitt aus möglichst wenigen Rohplatten.
+
+   Rangfolge der Güte
+   1. wenige Rohplatten           (gleichbedeutend mit wenig Verschnitt, die Fertigfläche ist fix)
+   2. wenige Teilstücke je Stück  (jede Fuge ist Arbeit und ein Risiko)
+   3. grosse Teilstücke, Randstreifen möglichst durchgehend
+   4. wenige verschiedene Teilmasse
+
+   Das Mindestmass eines Teilstücks ist eine harte Schranke der Suche, nicht
+   ein Filter am Ende. Kostet es eine Rohplatte, wird die günstigere Lösung
+   trotzdem gerechnet und als ausgewiesene Alternative zurückgegeben.
+*/
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.NAEngine = api;
+})(typeof self !== 'undefined' ? self : this, function () {
+  'use strict';
+
+  const schluessel = (a) => a.join('|');
+
+  // ---------------------------------------------------------------- Teilungen
+  /* Zerlegt eine Kante der Länge L in genau k Abschnitte. Kein Abschnitt darf
+     unter minTeil liegen. Vier Bauarten, alle mit demselben Zweck, möglichst
+     grosse Abschnitte und möglichst wenig Bruch.
+       gleich      alle Abschnitte gleich gross
+       voll vorn   volle Plattenmasse voran, Rest am Ende
+       voll hinten Rest am Anfang, volle Plattenmasse danach
+       Rest mittig volle Plattenmasse aussen, Rest in der Mitte
+     Die letzten beiden ändern für den Packer nichts, sie ergeben aber ein
+     ruhigeres Fugenbild in der Sichtfläche. */
+  function teilungen(L, k, plattenMasse, minTeil) {
+    const out = [];
+    const nimm = (arr) => {
+      if (arr.length !== k) return;
+      let summe = 0;
+      for (const v of arr) { if (v <= 0 || v < minTeil) return; summe += v; }
+      if (summe !== L) return;
+      out.push(arr);
+    };
+    const gleichmaessig = (rest, n) => {
+      const b = Math.floor(rest / n), r = rest - b * n, a = [];
+      for (let i = 0; i < n; i++) a.push(b + (i < r ? 1 : 0));
+      return a;
+    };
+    nimm(gleichmaessig(L, k));
+    for (const P of plattenMasse) {
+      if (P <= 0 || P < minTeil) continue;
+      const voll = Math.min(Math.floor(L / P), k - 1);
+      if (voll < 1) continue;
+      const restL = L - voll * P, uebrig = k - voll;
+      if (restL <= 0 || uebrig < 1) continue;
+      const vollTeil = new Array(voll).fill(P), restTeil = gleichmaessig(restL, uebrig);
+      nimm(vollTeil.concat(restTeil));
+      nimm(restTeil.concat(vollTeil));
+      if (voll >= 2) {
+        const links = Math.floor(voll / 2);
+        nimm(vollTeil.slice(0, links).concat(restTeil, vollTeil.slice(links)));
+      }
+    }
+    const gesehen = new Set();
+    return out.filter((a) => { const s = schluessel(a); if (gesehen.has(s)) return false; gesehen.add(s); return true; });
+  }
+
+  /* Passt ein Teilstück w x h auf die Rohplatte PL x PB.
+     drehen = false heisst, die Länge des Teils läuft entlang der Plattenlänge. */
+  function passt(w, h, PL, PB, drehen) {
+    if (w <= PL && h <= PB) return true;
+    if (drehen && w <= PB && h <= PL) return true;
+    return false;
+  }
+
+  /* Unterteilungen der Gegenkante für eine Spalte der Breite q. Je Abschnittszahl
+     wird die beste Teilung behalten, damit keine Abschnittszahl verlorengeht.
+     Genau daran ist die Vorgängerfassung gescheitert. */
+  function kantenKandidaten(L, q, PL, PB, drehen, quer, minTeil) {
+    const masse = drehen ? [PL, PB] : [quer ? PB : PL];
+    const kMax = minTeil > 0 ? Math.floor(L / minTeil) : 60;
+    const gut = [];
+    let kMin = 0;
+    // Wie viele Abschnitte ergeben zusammen mit der Gegenkante q eine volle
+    // Rohplatte? Das ist der entscheidende Punkt. Eine Teilung, die eine volle
+    // Platte trifft, ist beim Packen etwas ganz anderes wert als eine
+    // gleichmässige, auch wenn ihre kleinste Kante schlechter aussieht. Genau
+    // daran ist die Vorgängerfassung bei 1800 x 900 gescheitert.
+    const vollePlatte = (seg) => {
+      const a = quer ? q : seg, b = quer ? seg : q;
+      if (a === PL && b === PB) return true;
+      return drehen && a === PB && b === PL;
+    };
+    const vollZahl = (t) => t.reduce((n, seg) => n + (vollePlatte(seg) ? 1 : 0), 0);
+    for (let k = 1; k <= Math.min(kMax, 60); k++) {
+      const treffer = teilungen(L, k, masse, minTeil)
+        .filter((t) => t.every((seg) => quer ? passt(q, seg, PL, PB, drehen) : passt(seg, q, PL, PB, drehen)));
+      if (!treffer.length) continue;
+      if (!kMin) kMin = k;
+      if (k > kMin + 4) break;
+      // Je Abschnittszahl zwei verschiedene Sichtweisen behalten, die
+      // ausgeglichenste und die, die am meisten volle Plattenmasse trifft.
+      const nachKante = treffer.slice().sort((a, b) => Math.min(...b) - Math.min(...a));
+      const nachVoll = treffer.slice().sort((a, b) => vollZahl(b) - vollZahl(a) || Math.min(...b) - Math.min(...a));
+      const nachGross = treffer.slice().sort((a, b) => Math.max(...b) - Math.max(...a) || Math.min(...b) - Math.min(...a));
+      for (const t of [nachKante[0], nachVoll[0], nachGross[0], nachKante[1]]) {
+        if (!t) continue;
+        const sl = schluessel(t);
+        if (!gut.some((g) => schluessel(g) === sl)) gut.push(t);
+      }
+      if (gut.length >= 12) break;
+    }
+    return gut;
+  }
+
+  /* Auswahl aus dem Kreuzprodukt der Spaltenunterteilungen. Nicht zufällig,
+     sondern nach der Form, die brauchbare Lösungen tatsächlich haben.
+     Zuerst alle Spalten gleich geteilt, dann alle gleich bis auf eine. Genau
+     das ist der Fall volle Rohplatte plus abweichender Randstreifen. Erst
+     danach wird gestreut, und nur wenn noch Platz ist. */
+  function kombinationen(laengen, maxK) {
+    const n = laengen.length;
+    const gesamt = laengen.reduce((a, b) => a * b, 1);
+    const raus = [], gesehen = new Set();
+    const nimm = (idx) => {
+      if (raus.length >= maxK) return false;
+      const s = idx.join(','); if (gesehen.has(s)) return true;
+      gesehen.add(s); raus.push(idx); return true;
+    };
+    if (gesamt <= maxK) {
+      for (let z = 0; z < gesamt; z++) {
+        let rest = z; const idx = [];
+        for (const len of laengen) { idx.push(rest % len); rest = Math.floor(rest / len); }
+        nimm(idx);
+      }
+      return raus;
+    }
+    const maxLen = Math.max(...laengen);
+    // 1 alle Spalten gleich geteilt
+    for (let j = 0; j < maxLen; j++) nimm(laengen.map((len) => Math.min(j, len - 1)));
+    // 2 alle gleich bis auf eine Spalte
+    for (let j = 0; j < Math.min(maxLen, 4); j++) {
+      const basis = laengen.map((len) => Math.min(j, len - 1));
+      for (let i = 0; i < n; i++)
+        for (let a = 0; a < laengen[i]; a++) {
+          if (a === basis[i]) continue;
+          const idx = basis.slice(); idx[i] = a;
+          if (!nimm(idx)) return raus;
+        }
+    }
+    // 3 der Rest gestreut, deterministisch
+    let s = 2463534242;
+    let versuche = 0;
+    while (raus.length < maxK && versuche++ < maxK * 20) {
+      s ^= s << 13; s >>>= 0; s ^= s >>> 17; s ^= s << 5; s >>>= 0;
+      nimm(laengen.map((len, i) => (s >>> (i % 5 * 6)) % len));
+    }
+    return raus;
+  }
+
+  /* Zerlegungen der Fertigfläche. Zwei Bauarten, beide echte Guillotineschnitte.
+     spalten  erst senkrechte Schnitte über die volle Höhe, dann je Spalte eigene
+              waagrechte Schnitte. Jede Spalte darf eigenständig geteilt werden,
+              auch zwei Spalten gleicher Breite. Damit bleibt der Randstreifen
+              ein einziges durchgehendes Stück, während die volle Spalte geteilt wird.
+     reihen   dasselbe um neunzig Grad gedreht. */
+  function zerlegungen(L, B, PL, PB, drehen, minTeil, teileMax, frist, nExtra, maxK, maxZ) {
+    const erg = [];
+    const maxKante = drehen ? Math.max(PL, PB) : PL;
+    const maxKanteQ = drehen ? Math.max(PL, PB) : PB;
+
+    const bauen = (haupt, quer, art) => {
+      const hauptMax = art === 'spalten' ? maxKante : maxKanteQ;
+      const nMin = Math.max(1, Math.ceil(haupt / hauptMax));
+      const nMax = Math.min(minTeil > 0 ? Math.floor(haupt / minTeil) : nMin + nExtra, nMin + nExtra, 60);
+      const masseHaupt = drehen ? [PL, PB] : [art === 'spalten' ? PL : PB];
+      for (let n = nMin; n <= nMax; n++) {
+        if (erg.length >= maxZ) return;
+        if (Date.now() > frist && erg.length) return;
+        for (const haupts of teilungen(haupt, n, masseHaupt, minTeil)) {
+          const proSpalte = [];
+          let machbar = true;
+          const merker = new Map();
+          for (const w of haupts) {
+            if (!merker.has(w)) merker.set(w, art === 'spalten'
+              ? kantenKandidaten(quer, w, PL, PB, drehen, true, minTeil)
+              : kantenKandidaten(quer, w, PL, PB, drehen, false, minTeil));
+            const k = merker.get(w);
+            if (!k.length) { machbar = false; break; }
+            proSpalte.push(k);
+          }
+          if (!machbar) continue;
+          const kZahl = haupts.length <= 4 ? maxK : Math.max(8, maxK >> 2);
+          for (const idx of kombinationen(proSpalte.map((c) => c.length), kZahl)) {
+            if (erg.length >= maxZ) break;
+            const pieces = [];
+            let lauf = 0, fugen = n - 1, durchgehend = 0, zuViele = false;
+            for (let i = 0; i < haupts.length; i++) {
+              const w = haupts[i], segs = proSpalte[i][idx[i]];
+              fugen += segs.length - 1;
+              if (segs.length === 1) durchgehend++;
+              if (pieces.length + segs.length > teileMax) { zuViele = true; break; }
+              let q = 0;
+              for (const s of segs) {
+                pieces.push(art === 'spalten' ? { x: lauf, y: q, w, h: s } : { x: q, y: lauf, w: s, h: w });
+                q += s;
+              }
+              lauf += w;
+            }
+            if (zuViele) continue;
+            erg.push({
+              pieces, art, haupts,
+              spalten: art === 'spalten' ? haupts.map((w, i) => ({ w, segs: proSpalte[i][idx[i]] })) : null,
+              reihen: art === 'reihen' ? haupts.map((h, i) => ({ h, segs: proSpalte[i][idx[i]] })) : null,
+              fugen, durchgehend,
+              minKante: Math.min(...pieces.map((p) => Math.min(p.w, p.h))),
+              masse: new Set(pieces.map((p) => `${p.w}x${p.h}`)).size
+            });
+          }
+        }
+      }
+    };
+    // beide Bauarten bekommen die halbe Obergrenze, sonst frisst die erste
+    // alles auf und die zweite kommt nie zum Zug
+    const grenzeJe = Math.ceil(maxZ / 2);
+    const gesamtGrenze = maxZ; maxZ = grenzeJe;
+    bauen(L, B, 'spalten');
+    maxZ = Math.min(gesamtGrenze, erg.length + grenzeJe);
+    bauen(B, L, 'reihen');
+
+    const gesehen = new Set();
+    return erg.filter((z) => {
+      const k = z.pieces.map((p) => `${p.x},${p.y},${p.w},${p.h}`).sort().join(';');
+      if (gesehen.has(k)) return false; gesehen.add(k); return true;
+    });
+  }
+
+  // ------------------------------------------------------------- Packen
+  /* Guillotine Packer über einen Schnittbaum. Jede Platte ist ein Baum aus
+     Rechtecken, jeder Knoten ein gerader Schnitt. Damit ist alles, was der
+     Packer legt, auf der Kreissäge auch wirklich schneidbar. */
+  function neuePlatte(PL, PB) {
+    return { root: { x: 0, y: 0, w: PL, h: PB, frei: true }, items: [], cuts: [], PL, PB };
+  }
+  function blaetter(node, out) {
+    if (node.kinder) { for (const k of node.kinder) blaetter(k, out); }
+    else if (node.frei) out.push(node);
+    return out;
+  }
+  /* Teilt ein freies Blatt, nachdem w x h in der Ecke links oben belegt wurde.
+     Die Schnittzugabe wird nur dort abgezogen, wo wirklich geschnitten wird. */
+  function belegen(node, w, h, kerf, richtung, cuts) {
+    const restR = node.w - w - kerf;
+    const restU = node.h - h - kerf;
+    const belegt = { x: node.x, y: node.y, w, h, frei: false };
+    const kinder = [];
+    if (richtung === 'h') {
+      if (restU > 0) {
+        cuts.push({ typ: 'h', y: node.y + h, x1: node.x, x2: node.x + node.w });
+        kinder.push({ x: node.x, y: node.y + h + kerf, w: node.w, h: restU, frei: true });
+      }
+      if (restR > 0) {
+        cuts.push({ typ: 'v', x: node.x + w, y1: node.y, y2: node.y + h });
+        kinder.push({ x: node.x + w + kerf, y: node.y, w: restR, h, frei: true });
+      }
+    } else {
+      if (restR > 0) {
+        cuts.push({ typ: 'v', x: node.x + w, y1: node.y, y2: node.y + node.h });
+        kinder.push({ x: node.x + w + kerf, y: node.y, w: restR, h: node.h, frei: true });
+      }
+      if (restU > 0) {
+        cuts.push({ typ: 'h', y: node.y + h, x1: node.x, x2: node.x + w });
+        kinder.push({ x: node.x, y: node.y + h + kerf, w, h: restU, frei: true });
+      }
+    }
+    node.frei = false;
+    node.kinder = [belegt, ...kinder];
+    return belegt;
+  }
+  function richtungWahl(node, w, h, strategie) {
+    if (strategie.schnitt !== 'auto') return strategie.schnitt;
+    // so schneiden, dass das grössere Reststück zusammenhängend bleibt
+    return (node.h - h) * node.w >= (node.w - w) * node.h ? 'h' : 'v';
+  }
+
+  function packen(teile, PL, PB, kerf, drehen, strategie) {
+    const plates = [];
+    for (const t of teile) {
+      const lagen = drehen && t.w !== t.h ? [[t.w, t.h, false], [t.h, t.w, true]] : [[t.w, t.h, false]];
+      let best = null;
+      for (let pi = 0; pi < plates.length; pi++) {
+        for (const blatt of blaetter(plates[pi].root, [])) {
+          for (const [w, h, gedreht] of lagen) {
+            if (w > blatt.w || h > blatt.h) continue;
+            const kurz = Math.min(blatt.w - w, blatt.h - h);
+            const lang = Math.max(blatt.w - w, blatt.h - h);
+            const wert = strategie.blatt === 'flaeche' ? (blatt.w * blatt.h - w * h) : kurz * 1e6 + lang;
+            if (!best || wert < best.wert) best = { wert, pi, blatt, w, h, gedreht };
+          }
+        }
+      }
+      if (best) {
+        const pl = plates[best.pi];
+        const b = belegen(best.blatt, best.w, best.h, kerf, richtungWahl(best.blatt, best.w, best.h, strategie), pl.cuts);
+        pl.items.push({ ref: t, x: b.x, y: b.y, w: best.w, h: best.h, gedreht: best.gedreht });
+      } else {
+        // Neue Platte. Auch hier beide Lagen bewerten und nicht einfach die
+        // erste nehmen, die passt. Sonst liegt das erste Teil jeder Platte
+        // immer ungedreht, und zwei Teile, die nur quer nebeneinander gehen,
+        // brauchen zwei Platten statt einer.
+        const pl = neuePlatte(PL, PB);
+        let wahl = null;
+        for (const [w, h, gedreht] of lagen) {
+          if (w > PL || h > PB) continue;
+          const kurz = Math.min(PL - w, PB - h), lang = Math.max(PL - w, PB - h);
+          const wert = strategie.blatt === 'flaeche' ? (PL * PB - w * h) : kurz * 1e6 + lang;
+          if (!wahl || wert < wahl.wert) wahl = { wert, w, h, gedreht };
+        }
+        if (!wahl) return null;
+        const b = belegen(pl.root, wahl.w, wahl.h, kerf, richtungWahl(pl.root, wahl.w, wahl.h, strategie), pl.cuts);
+        pl.items.push({ ref: t, x: b.x, y: b.y, w: wahl.w, h: wahl.h, gedreht: wahl.gedreht });
+        plates.push(pl);
+      }
+    }
+    return plates;
+  }
+
+  const SORTEN = {
+    flaeche: (a, b) => b.w * b.h - a.w * a.h || b.h - a.h,
+    hoehe: (a, b) => b.h - a.h || b.w - a.w,
+    breite: (a, b) => b.w - a.w || b.h - a.h,
+    lange: (a, b) => Math.max(b.w, b.h) - Math.max(a.w, a.h) || b.w * b.h - a.w * a.h
+  };
+  const STRATEGIEN = [];
+  for (const sort of ['flaeche', 'hoehe', 'breite', 'lange'])
+    for (const blatt of ['kurz', 'flaeche'])
+      STRATEGIEN.push({ sort, schnitt: 'auto', blatt });
+  STRATEGIEN.push({ sort: 'flaeche', schnitt: 'h', blatt: 'kurz' });
+  STRATEGIEN.push({ sort: 'flaeche', schnitt: 'v', blatt: 'kurz' });
+
+  /* Packt m Stück der Zerlegung. Probiert alle Strategien und nimmt die beste.
+     Das Ergebnis wird je m gemerkt. */
+  function packeGruppe(zerl, m, PL, PB, kerf, drehen, cache) {
+    if (cache.has(m)) return cache.get(m);
+    const liste = [];
+    for (let n = 0; n < m; n++) zerl.pieces.forEach((p, i) => liste.push({ ...p, stk: n + 1, idx: i }));
+    const grenze = Math.ceil(liste.reduce((s, p) => s + p.w * p.h, 0) / (PL * PB) - 1e-9);
+    let best = null;
+    for (const st of STRATEGIEN) {
+      const plates = packen(liste.slice().sort(SORTEN[st.sort]), PL, PB, kerf, drehen, st);
+      if (!plates) continue;
+      // Bei gleicher Plattenzahl ist der Plan besser, der das grösste
+      // zusammenhängende Reststück übrig lässt. Das ist der Rest, der beim
+      // nächsten Auftrag noch etwas taugt.
+      const groessterRest = Math.max(0, ...plates.map((pl) => Math.max(0, ...blaetter(pl.root, []).map((b) => b.w * b.h))));
+      if (!best || plates.length < best.plates.length ||
+          (plates.length === best.plates.length && groessterRest > best.groessterRest))
+        best = { plates, groessterRest, st };
+      if (best.plates.length === grenze && best.plates === plates) break;
+    }
+    const r = best ? { plates: best.plates, m, strategie: best.st } : null;
+    cache.set(m, r);
+    return r;
+  }
+
+  /* Serien. n gleiche Stück müssen nicht in einem Zug gepackt werden. Es ist
+     schneller und in der Werkstatt übersichtlicher, eine Gruppe von m Stück zu
+     packen und diesen Plan zu wiederholen. Gesucht ist das m mit den wenigsten
+     Platten je Stück. Für m gleich n ist das der direkte Fall. */
+  function bestesPacken(zerl, stueck, PL, PB, kerf, drehen) {
+    const cache = new Map();
+    const proGruppe = Math.max(1, Math.floor(44 / zerl.pieces.length));
+    const maxM = Math.max(1, Math.min(stueck, proGruppe, 6));
+    let best = null;
+    for (let m = 1; m <= maxM; m++) {
+      const g = packeGruppe(zerl, m, PL, PB, kerf, drehen, cache);
+      if (!g) continue;
+      const wdh = Math.floor(stueck / m), restStk = stueck - wdh * m;
+      let restG = null;
+      if (restStk > 0) { restG = packeGruppe(zerl, restStk, PL, PB, kerf, drehen, cache); if (!restG) continue; }
+      const gesamt = wdh * g.plates.length + (restG ? restG.plates.length : 0);
+      if (!best || gesamt < best.gesamt || (gesamt === best.gesamt && m < best.m)) best = { gesamt, m, g, wdh, restG };
+    }
+    if (!best) return null;
+
+    // Plan ausrollen. Jede Wiederholung bekommt eigene Teilstücke mit eigener
+    // Stücknummer, die Geometrie der Platte wird geteilt.
+    const plates = [], teile = [];
+    let versatz = 0;
+    const anhaengen = (gr, wdh) => {
+      for (let w = 0; w < wdh; w++) {
+        const map = new Map();
+        for (const pl of gr.plates) {
+          const items = pl.items.map((it) => {
+            let ref = map.get(it.ref);
+            if (!ref) { ref = { ...it.ref, stk: it.ref.stk + versatz }; map.set(it.ref, ref); teile.push(ref); }
+            return { ...it, ref };
+          });
+          plates.push({ root: pl.root, cuts: pl.cuts, PL, PB, items });
+        }
+        versatz += gr.m;
+      }
+    };
+    anhaengen(best.g, best.wdh);
+    if (best.restG) anhaengen(best.restG, 1);
+    teile.sort((a, b) => a.stk - b.stk || a.idx - b.idx);
+
+    return { plates, teile, strategie: best.g.strategie, gruppe: best.m, wiederholungen: best.wdh };
+  }
+
+  // ------------------------------------------------------------- Hauptlauf
+  /* Ein vollständiger Suchlauf mit einem festen Mindestmass. */
+  function loesen(p, minTeil, nExtra, maxK, maxZ, frist) {
+    const { rohL, rohB, fertigL, fertigB, stueck, kerf, drehen } = p;
+    const grenze1 = Math.ceil(fertigL * fertigB / (rohL * rohB) - 1e-9);
+    const teileMax = Math.max(8, Math.min(3 * grenze1 + 6, 60));
+    const zerl = zerlegungen(fertigL, fertigB, rohL, rohB, drehen, minTeil, teileMax, frist, nExtra, maxK, maxZ);
+    if (!zerl.length) return null;
+
+    // Zweistufig. Erst jede Zerlegung mit einer einzigen Strategie grob
+    // schätzen, das ist zehnmal billiger als der volle Lauf. Dann nur die
+    // aussichtsreichen vollständig packen. Ohne diese Trennung müsste die
+    // Suche viel früher abbrechen und würde bessere Lösungen nie sehen.
+    const flaeche = fertigL * fertigB * stueck;
+    const grenze = Math.ceil(flaeche / (rohL * rohB) - 1e-9);
+    // Drei Strategien statt einer. Mit nur einer Strategie ist die Schätzung so
+    // ungenau, dass sie gute Zerlegungen aussortiert, bevor sie je vollständig
+    // gepackt wurden. Drei kosten wenig und treffen deutlich besser.
+    const GROB = [
+      { sort: 'flaeche', schnitt: 'auto', blatt: 'kurz' },
+      { sort: 'hoehe', schnitt: 'auto', blatt: 'kurz' },
+      { sort: 'flaeche', schnitt: 'auto', blatt: 'flaeche' }
+    ];
+    const schaetzung = [];
+    for (const z of zerl) {
+      if (Date.now() > frist && schaetzung.length) break;   // Notbremse, greift normal nie
+      // Geschätzt wird auf Platten je Stück, nicht auf Platten für ein Stück.
+      // Bei Serien entscheidet sich genau daran, welche Zerlegung taugt, weil
+      // erst die Gruppe zeigt, ob die Teilstücke ineinandergreifen.
+      const mProbe = Math.max(1, Math.min(stueck, Math.floor(44 / z.pieces.length), 3));
+      const probe = [];
+      for (let n = 0; n < mProbe; n++) z.pieces.forEach((p, i) => probe.push({ ...p, stk: n + 1, idx: i }));
+      let beste = null;
+      for (const g of (zerl.length > 600 ? GROB.slice(0, 2) : GROB)) {
+        const pl = packen(probe.slice().sort(SORTEN[g.sort]), rohL, rohB, kerf, drehen, g);
+        if (pl && (beste === null || pl.length < beste)) beste = pl.length;
+      }
+      if (beste === null) continue;
+      schaetzung.push({ z, schaetz: beste / mProbe });
+    }
+    if (!schaetzung.length) return null;
+    schaetzung.sort((a, b) =>
+      a.schaetz - b.schaetz ||
+      a.z.pieces.length - b.z.pieces.length ||
+      b.z.minKante - a.z.minKante ||
+      b.z.durchgehend - a.z.durchgehend ||
+      a.z.masse - b.z.masse);
+    const bestSchaetz = schaetzung[0].schaetz;
+    // Bei Serien ist ein voller Packlauf viel teurer, deshalb weniger Kandidaten.
+    const tief = stueck > 1 ? 10 : 20, deckel = stueck > 1 ? 18 : 36;
+    const auswahl = schaetzung
+      .filter((e, i) => i < tief || e.schaetz === bestSchaetz)
+      .slice(0, deckel);
+
+    const kandidaten = [];
+    let bestePlatten = Infinity, besteTeilzahl = Infinity;
+    for (const e of auswahl) {
+      const z = e.z;
+      // Nicht nach Teilzahl abbrechen. Die Schätzung ordnet nach Platten je
+      // Stück, nicht nach Teilzahl, deshalb kann die teilärmste Lösung hinten
+      // stehen. Die Auswahl ist ohnehin gedeckelt, der Rest kostet wenig.
+      if (bestePlatten === grenze && z.pieces.length > besteTeilzahl + 4) break;
+      if (Date.now() > frist && kandidaten.length) break;
+      const pack = bestesPacken(z, stueck, rohL, rohB, kerf, drehen);
+      if (!pack) continue;
+      if (pack.plates.length < bestePlatten) { bestePlatten = pack.plates.length; besteTeilzahl = z.pieces.length; }
+      else if (pack.plates.length === bestePlatten) besteTeilzahl = Math.min(besteTeilzahl, z.pieces.length);
+      kandidaten.push({ zerl: z, ...pack });
+    }
+    if (!kandidaten.length) return null;
+    kandidaten.sort((a, b) =>
+      a.plates.length - b.plates.length ||                 // 1 wenige Platten
+      a.zerl.pieces.length - b.zerl.pieces.length ||       // 2 wenige Teile
+      b.zerl.minKante - a.zerl.minKante ||                 // 3a grosses kleinstes Teil
+      b.zerl.durchgehend - a.zerl.durchgehend ||           // 3b durchgehende Streifen
+      a.zerl.masse - b.zerl.masse);                        // 4 wenige verschiedene Masse
+    return { kandidaten, grenze, geprueft: kandidaten.length, zerlAnzahl: zerl.length };
+  }
+
+
+  /* Dreht eine Lösung um neunzig Grad. Gebraucht wird das, weil intern immer
+     mit der längeren Kante als Länge gerechnet wird. Ohne das liefert dieselbe
+     Fläche hochkant ein anderes Ergebnis als quer, und das ist keine Rechnung,
+     das ist Zufall. Die Rohplatten selbst bleiben unberührt, gekippt wird nur
+     die Sicht auf die Fertigfläche. */
+  function kippen(res) {
+    const kippStueck = (p) => { const w = p.w, x = p.x; p.w = p.h; p.h = w; p.x = p.y; p.y = x; };
+    const kippZerl = (z) => {
+      z.pieces.forEach(kippStueck);
+      const sp = z.spalten, re = z.reihen;
+      z.art = z.art === 'spalten' ? 'reihen' : 'spalten';
+      z.spalten = re ? re.map((r) => ({ w: r.h, segs: r.segs })) : null;
+      z.reihen = sp ? sp.map((c) => ({ h: c.w, segs: c.segs })) : null;
+    };
+    kippZerl(res.zerl);
+    res.teile.forEach(kippStueck);
+    for (const pl of res.plates) for (const it of pl.items) it.gedreht = !it.gedreht;
+    for (const a of res.alternativen) {
+      kippZerl(a.zerl);
+      a.art = a.zerl.art; a.spalten = a.zerl.spalten; a.reihen = a.zerl.reihen;
+    }
+    return res;
+  }
+
+  function berechnen(cfg) {
+    const p = {
+      rohL: Math.round(cfg.rohL), rohB: Math.round(cfg.rohB),
+      fertigL: Math.round(cfg.fertigL), fertigB: Math.round(cfg.fertigB),
+      stueck: Math.max(1, Math.floor(cfg.stueck || 1)),
+      kerf: Math.max(0, Math.round(cfg.kerf || 0)),
+      drehen: !!cfg.drehen
+    };
+    const minTeil = Math.max(0, Math.round(cfg.minTeil || 0));
+    for (const k of ['rohL', 'rohB', 'fertigL', 'fertigB', 'stueck', 'kerf'])
+      if (!Number.isFinite(p[k])) return { grund: 'eingabe' };
+    if (!(p.rohL > 0 && p.rohB > 0 && p.fertigL > 0 && p.fertigB > 0)) return { grund: 'eingabe' };
+    if (!Number.isFinite(p.rohL * p.rohB * p.fertigL * p.fertigB * p.stueck)) return { grund: 'zu_gross' };
+
+    // Bei erlaubtem Drehen ist die Aufgabe symmetrisch. Intern wird deshalb
+    // immer mit der längeren Kante als Länge gerechnet und am Ende zurückgedreht.
+    const gekippt = p.drehen && p.fertigB > p.fertigL;
+    if (gekippt) { const t = p.fertigL; p.fertigL = p.fertigB; p.fertigB = t; }
+
+    const budget = cfg.budget > 0 ? cfg.budget : 6000;
+    const start = Date.now();
+    // Suchweite, Kombinationen je Spaltenmuster, Zahl der Zerlegungen.
+    // Feste Zahlen, keine Zeitschranke. Das Ergebnis muss auf jedem Gerät
+    // dasselbe sein, sonst steht in der Kalkulation je nach Rechner eine
+    // andere Plattenzahl.
+    const RUNDEN = [[1, 64, 1200], [3, 160, 1800], [5, 360, 2400]];
+
+    /* Schrittweise vertiefen. Die erste Runde sucht eng und ist in wenigen
+       Millisekunden fertig. Steht damit schon die Flächenschranke, ist nichts
+       mehr zu holen und der Kern hört auf. Erst wenn Platten zu sparen sind,
+       wird breiter gesucht. Ohne das verbrennt auch der einfachste Fall das
+       ganze Zeitbudget. */
+    const vertiefen = (minT, anteil) => {
+      const ende = start + budget * anteil;
+      let best = null, ohneGewinn = 0;
+      for (const [nExtra, maxK, maxZ] of RUNDEN) {
+        const r = loesen(p, minT, nExtra, maxK, maxZ, ende);
+        const vorher = best ? best.kandidaten[0].plates.length : Infinity;
+        if (r && (!best || r.kandidaten[0].plates.length < vorher)) best = r;
+        if (best && best.kandidaten[0].plates.length === best.grenze) break;
+        // Bringt eine Vertiefung keine Platte mehr, bringt die nächste es
+        // erfahrungsgemäss auch nicht. Zwei erfolglose Stufen genügen.
+        ohneGewinn = (best && best.kandidaten[0].plates.length < vorher) ? 0 : ohneGewinn + 1;
+        if (ohneGewinn >= 2) break;
+        if (Date.now() > ende) break;
+      }
+      return best;
+    };
+
+    let haupt = minTeil > 0 ? vertiefen(minTeil, 0.5) : vertiefen(0, 0.7);
+    let mindestmassVerfehlt = false;
+    if (!haupt && minTeil > 0) { haupt = vertiefen(0, 0.7); mindestmassVerfehlt = true; }
+    if (!haupt) {
+      const passtEins = passt(p.fertigL, p.fertigB, p.rohL, p.rohB, p.drehen);
+      return { grund: passtEins ? 'eingabe' : 'zu_gross' };
+    }
+
+    // Lauf ohne Mindestmass. Nur nötig, wenn die Flächenschranke noch nicht steht.
+    let ohneSchranke = null;
+    const bindet = minTeil > 0 && haupt.kandidaten[0].zerl.minKante < minTeil * 1.6;
+    if (bindet && !mindestmassVerfehlt && haupt.kandidaten[0].plates.length > haupt.grenze) {
+      const b = vertiefen(0, 1.0);
+      if (b && b.kandidaten[0].plates.length < haupt.kandidaten[0].plates.length) ohneSchranke = b.kandidaten[0];
+    }
+
+    const feld = haupt.kandidaten;
+    const sieger = feld[0];
+
+    // Alternativen. Gezeigt wird nur, was gegenüber der gewählten Lösung wirklich
+    // etwas gewinnt, nämlich weniger Platten, weniger Teilstücke oder eine
+    // grössere kleinste Kante. Wer auf allen Achsen schlechter ist, ist kein Angebot.
+    const roh = ohneSchranke ? [ohneSchranke, ...feld.slice(1)] : feld.slice(1);
+    const alternativen = [];
+    for (const k of roh) {
+      if (alternativen.length >= 2) break;
+      const besser = k.plates.length < sieger.plates.length ||
+                     k.zerl.pieces.length < sieger.zerl.pieces.length ||
+                     k.zerl.minKante > sieger.zerl.minKante;
+      if (!besser) continue;
+      if (alternativen.some((a) => a.plates.length <= k.plates.length
+        && a.zerl.pieces.length <= k.zerl.pieces.length
+        && a.zerl.minKante >= k.zerl.minKante)) continue;
+      alternativen.push(k);
+    }
+
+    const flaecheFertig = p.fertigL * p.fertigB * p.stueck;
+    const areaP = sieger.plates.length * p.rohL * p.rohB;
+    const ergebnis = {
+      plates: sieger.plates, zerl: sieger.zerl, teile: sieger.teile,
+      n: sieger.plates.length,
+      untereGrenze: haupt.grenze,
+      areaT: flaecheFertig, areaP,
+      verschnitt: 1 - flaecheFertig / areaP,
+      strategie: sieger.strategie,
+      gruppe: sieger.gruppe, wiederholungen: sieger.wiederholungen,
+      mindestmassVerfehlt,
+      alternativen: alternativen.map((a) => ({
+        platten: a.plates.length, teile: a.zerl.pieces.length, zerl: a.zerl,
+        art: a.zerl.art, spalten: a.zerl.spalten, reihen: a.zerl.reihen,
+        minKante: a.zerl.minKante,
+        unterMindestmass: minTeil > 0 && a.zerl.minKante < minTeil,
+        verschnitt: 1 - flaecheFertig / (a.plates.length * p.rohL * p.rohB)
+      })),
+      geprüft: haupt.geprueft,
+      dauer: Date.now() - start
+    };
+    return gekippt ? kippen(ergebnis) : ergebnis;
+  }
+
+
+  // ------------------------------------------------------------- Sägefolge
+  /* Bestimmt aus einem fertig belegten Plan die Schnittfolge mit den
+     wenigsten durchgehenden Schnitten. Jeder Schnitt geht durch das ganze
+     Stück, das gerade an der Säge liegt, so wie an der Formatkreissäge
+     tatsächlich gearbeitet wird. Reste werden nie ohne Grund geteilt, ein
+     Schnitt fällt nur, wenn er ein Teil freistellt.
+     Gerechnet wird erschöpfend mit Merkzettel, bei sehr vielen Teilen greift
+     eine Schranke und danach eine einfache Regel. */
+  function schnittfolge(items, PL, PB, kerf) {
+    const merk = new Map();
+    let zustaende = 0;
+    const SCHRANKE = 40000;
+    const kreuzt = (it, typ, pos) => typ === 'v'
+      ? (it.x < pos + kerf && it.x + it.w > pos)
+      : (it.y < pos + kerf && it.y + it.h > pos);
+    const drin = (it, r) => it.x >= r.x1 && it.x + it.w <= r.x2 && it.y >= r.y1 && it.y + it.h <= r.y2;
+
+    // Ergebnis je Bereich: { n: Schnittzahl, cuts: [], reste: [] }
+    function loese(r) {
+      const key = `${r.x1},${r.y1},${r.x2},${r.y2}`;
+      if (merk.has(key)) return merk.get(key);
+      const inn = items.filter((it) => drin(it, r));
+      let res;
+      if (!inn.length) res = { n: 0, cuts: [], reste: [{ x: r.x1, y: r.y1, w: r.x2 - r.x1, h: r.y2 - r.y1 }] };
+      else if (inn.length === 1 && inn[0].x === r.x1 && inn[0].y === r.y1 && inn[0].x + inn[0].w === r.x2 && inn[0].y + inn[0].h === r.y2)
+        res = { n: 0, cuts: [], reste: [] };
+      else {
+        const kand = [];
+        for (const it of inn) {
+          kand.push(['v', it.x + it.w], ['v', it.x - kerf], ['h', it.y + it.h], ['h', it.y - kerf]);
+        }
+        let best = null;
+        const gesehen = new Set();
+        for (const [typ, pos] of kand) {
+          const lo = typ === 'v' ? r.x1 : r.y1, hi = typ === 'v' ? r.x2 : r.y2;
+          if (pos <= lo || pos >= hi) continue;
+          const randSchnitt = pos + kerf >= hi;   // der Rest hinter dem Schnitt ist schmaler als das Blatt, er geht als Staub weg
+          const k = typ + pos; if (gesehen.has(k)) continue; gesehen.add(k);
+          if (inn.some((it) => kreuzt(it, typ, pos))) continue;
+          const a = typ === 'v' ? { x1: r.x1, y1: r.y1, x2: pos, y2: r.y2 } : { x1: r.x1, y1: r.y1, x2: r.x2, y2: pos };
+          const b = typ === 'v' ? { x1: pos + kerf, y1: r.y1, x2: r.x2, y2: r.y2 } : { x1: r.x1, y1: pos + kerf, x2: r.x2, y2: r.y2 };
+          // Ein Schnitt, der nur Rest von Rest trennt, ist keiner.
+          if (!inn.some((it) => drin(it, a)) && (randSchnitt || !inn.some((it) => drin(it, b)))) continue;
+          if (++zustaende > SCHRANKE && best) break;
+          const ra = loese(a), rb = randSchnitt ? { n: 0, cuts: [], reste: [] } : loese(b);
+          const n = 1 + ra.n + rb.n;
+          const cut = typ === 'v' ? { typ, x: pos, y1: r.y1, y2: r.y2 } : { typ, y: pos, x1: r.x1, x2: r.x2 };
+          const reste = ra.reste.concat(rb.reste);
+          const grosser = Math.max(0, ...reste.map((q) => q.w * q.h));
+          if (!best || n < best.n || (n === best.n && grosser > best.grosser))
+            best = { n, cuts: [cut, ...ra.cuts, ...rb.cuts], reste, grosser };
+        }
+        res = best ? { n: best.n, cuts: best.cuts, reste: best.reste } : { n: Infinity, cuts: [], reste: [] };
+      }
+      merk.set(key, res);
+      return res;
+    }
+    const r = loese({ x1: 0, y1: 0, x2: PL, y2: PB });
+    return { cuts: r.cuts, reste: r.reste, n: r.n, vollstaendig: zustaende <= SCHRANKE };
+  }
+
+  /* Wendet die Sägefolge auf alle Platten an und trägt Reste und Schnitte ein. */
+  function saegefolgen(plates, PL, PB, kerf) {
+    for (const pl of plates) {
+      const f = schnittfolge(pl.items, PL, PB, kerf);
+      if (Number.isFinite(f.n)) { pl.cuts = f.cuts; pl.reste = f.reste; pl.schnitte = f.n; }
+      else { pl.reste = blaetter(pl.root, []); pl.schnitte = pl.cuts.length; }
+    }
+    return plates;
+  }
+
+  // ------------------------------------------------------------- Mehrere Positionen
+  /* Güte der Reste. Summe der Quadrate der verwertbaren Restflächen in m².
+     Wenige grosse Reste schlagen viele kleine bei gleicher Gesamtfläche.
+     Reste, die in einer Richtung unter minNutz liegen, zählen nicht, die sind
+     Verschnitt und taugen für kein nächstes Projekt. */
+  const resteVon = (pl) => pl.reste || blaetter(pl.root, []);
+  function restGuete(plates, minNutz) {
+    let s = 0;
+    for (const pl of plates) for (const b of resteVon(pl)) {
+      if (Math.min(b.w, b.h) < minNutz) continue;
+      const a = b.w * b.h / 1e6; s += a * a;
+    }
+    return s;
+  }
+  function groessterRest(plates, minNutz) {
+    let g = 0;
+    for (const pl of plates) for (const b of resteVon(pl)) if (Math.min(b.w, b.h) >= minNutz) g = Math.max(g, b.w * b.h);
+    return g;
+  }
+  const schnittzahl = (plates) => plates.reduce((s, pl) => s + (pl.schnitte !== undefined ? pl.schnitte : pl.cuts.length), 0);
+  /* Ist Plan a besser als Plan b. Rangfolge, festgelegt am 21.09.2026
+       1 weniger Platten
+       2 grösster verwertbarer Rest, aber nur wenn der Unterschied über der
+         Toleranz liegt. Darunter gilt der Rest als gleich gut.
+       3 weniger Schnitte
+       4 Summe der Restgüte
+     Gerechnet wird auf Plänen, die schon ihre Sägefolge haben. */
+  function besserAls(a, b, minNutz, toleranz) {
+    if (!b) return true;
+    if (a.length !== b.length) return a.length < b.length;
+    const ra = groessterRest(a, minNutz), rb = groessterRest(b, minNutz);
+    if (Math.abs(ra - rb) > (toleranz || 0)) return ra > rb;
+    const sa = schnittzahl(a), sb = schnittzahl(b);
+    if (sa !== sb) return sa < sb;
+    return restGuete(a, minNutz) > restGuete(b, minNutz) + 1e-12;
+  }
+  function packeAlle(teile, PL, PB, kerf, drehen, minNutz, toleranz) {
+    let best = null;
+    for (const st of STRATEGIEN) {
+      const pl = packen(teile.slice().sort(SORTEN[st.sort]), PL, PB, kerf, drehen, st);
+      if (!pl) continue;
+      saegefolgen(pl, PL, PB, kerf);
+      if (besserAls(pl, best, minNutz, toleranz)) best = pl;
+    }
+    return best;
+  }
+
+  /* Mehrere Positionen in einem Lauf. Jede Position ist ein Fertigmass mit
+     Stückzahl. Passt sie auf die Rohplatte, ist sie ein einziges Teil. Ist sie
+     grösser, zerlegt sie der bewährte Einzelkern wie bisher.
+     Dann werden zwei Pläne verglichen
+       getrennt   jede Position für sich, so wie der Einzelkern sie rechnet
+       gemeinsam  alle Teile aller Positionen in einem Packlauf
+     Der bessere gewinnt. Damit ist das Ergebnis nie schlechter als die
+     getrennte Rechnung, auch wenn der gemeinsame Packer einmal danebengreift. */
+  function berechnenMehrere(cfg) {
+    const PL = Math.round(cfg.rohL), PB = Math.round(cfg.rohB);
+    const kerf = Math.max(0, Math.round(cfg.kerf || 0));
+    const minTeil = Math.max(0, Math.round(cfg.minTeil || 0));
+    const drehen = !!cfg.drehen;
+    const fugen = cfg.fugen !== false;
+    const fugenAbstand = Math.max(0, Math.round(cfg.fugenAbstand || 0));
+    const minNutz = Math.max(1, Math.round(cfg.restMin || 200));
+    const toleranz = Math.max(0, Math.round(cfg.restToleranz || 0));   // mm², Unterschied beim grössten Rest, der als gleich gilt
+    if (!(PL > 0 && PB > 0) || !Number.isFinite(PL * PB)) return { grund: 'eingabe' };
+
+    const pos = (cfg.positionen || []).map((p, i) => ({
+      nr: p.nr !== undefined ? p.nr : i, name: p.name || '',
+      L: Math.round(+p.L), B: Math.round(+p.B), stk: Math.floor(+p.stk)
+    })).filter((p) => p.L > 0 && p.B > 0 && p.stk > 0 && Number.isFinite(p.L * p.B * p.stk));
+    if (!pos.length) return { grund: 'leer' };
+    const teileGesamt = pos.reduce((s, p) => s + p.stk, 0);
+    if (teileGesamt > 400) return { grund: 'zu_viele' };
+
+    const start = Date.now();
+    const budgetJe = Math.max(1500, Math.floor((cfg.budget || 9000) / pos.length));
+    const infos = [], alleTeile = [], getrennt = [];
+
+    for (let i = 0; i < pos.length; i++) {
+      const p = pos[i];
+      const info = { nr: p.nr, name: p.name, L: p.L, B: p.B, stk: p.stk, geteilt: false,
+                     zerl: null, mindestmassVerfehlt: false, mindestmassKostet: false };
+      if (passt(p.L, p.B, PL, PB, drehen)) {
+        info.zerl = { pieces: [{ x: 0, y: 0, w: p.L, h: p.B }], fugen: 0, minKante: Math.min(p.L, p.B) };
+        const eigene = [];
+        for (let n = 1; n <= p.stk; n++) eigene.push({ w: p.L, h: p.B, pos: i, stk: n, idx: 0 });
+        alleTeile.push(...eigene);
+        const plan = packeAlle(eigene, PL, PB, kerf, drehen, minNutz, toleranz);
+        if (!plan) return { grund: 'eingabe', pos: i, nr: p.nr };
+        getrennt.push(...plan);
+      } else {
+        if (!fugen) return { grund: 'ohne_fuge', pos: i, nr: p.nr };
+        const r = berechnen({ rohL: PL, rohB: PB, fertigL: p.L, fertigB: p.B, stueck: p.stk, kerf,
+                              minTeil: Math.max(minTeil, fugenAbstand), drehen, budget: budgetJe });
+        if (!r || r.grund) return { grund: r ? r.grund : 'eingabe', pos: i, nr: p.nr };
+        info.geteilt = true;
+        info.zerl = r.zerl;
+        info.mindestmassVerfehlt = r.mindestmassVerfehlt;
+        info.mindestmassKostet = r.alternativen.some((a) => a.unterMindestmass);
+        for (let n = 1; n <= p.stk; n++)
+          r.zerl.pieces.forEach((q, j) => alleTeile.push({ w: q.w, h: q.h, pos: i, stk: n, idx: j }));
+        const eig = r.plates.map((pl) => ({ root: pl.root, cuts: pl.cuts, PL, PB,
+            items: pl.items.map((it) => ({ ...it, ref: { w: it.ref.w, h: it.ref.h, pos: i, stk: it.ref.stk, idx: it.ref.idx } })) }));
+        saegefolgen(eig, PL, PB, kerf);
+        getrennt.push(...eig);
+      }
+      infos.push(info);
+    }
+
+    let plates = getrennt, gemeinsam = false;
+    if (pos.length > 1) {
+      const kombi = packeAlle(alleTeile, PL, PB, kerf, drehen, minNutz, toleranz);
+      if (kombi && besserAls(kombi, getrennt, minNutz, toleranz)) { plates = kombi; gemeinsam = true; }
+    }
+
+    const reste = [];
+    plates.forEach((pl, k) => {
+      for (const b of resteVon(pl))
+        if (Math.min(b.w, b.h) >= minNutz)
+          reste.push({ w: Math.max(b.w, b.h), h: Math.min(b.w, b.h), platte: k + 1 });
+    });
+    reste.sort((a, b) => b.w * b.h - a.w * a.h);
+
+    const areaT = pos.reduce((s, p) => s + p.L * p.B * p.stk, 0);
+    const areaP = plates.length * PL * PB;
+    return {
+      plates, positionen: infos, n: plates.length,
+      untereGrenze: Math.ceil(areaT / (PL * PB) - 1e-9),
+      getrenntN: getrennt.length, gemeinsam, schnitte: schnittzahl(plates),
+      areaT, areaP, verschnitt: 1 - areaT / areaP,
+      reste, restFlaeche: reste.reduce((s, r) => s + r.w * r.h, 0),
+      dauer: Date.now() - start
+    };
+  }
+
+  return { berechnen, berechnenMehrere, zerlegungen, teilungen, packen, packeAlle, bestesPacken, blaetter, passt, kombinationen, restGuete, schnittfolge, saegefolgen };
+});
+</script>
+<script>
+/* Zuschnittskalkulator, Oberfläche
+   Nimmt das Ergebnis aus dem Rechenkern und zeichnet es. Keine Rechnung hier. */
+(function () {
+  'use strict';
+  const E = NAEngine;
+  const $ = (id) => document.getElementById(id);
+  const fmt = (n) => String(Math.round(n));
+  const fmt1 = (n) => n.toLocaleString('de-AT', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+  const m2 = (mm2) => fmt1(mm2 / 1e6);
+  const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
+  const plural = (n, ein, viele) => `${n} ${n === 1 ? ein : viele}`;
+  const PALETTE = ['#EAE5D9', '#D2DEE3', '#E6E2C7', '#BCD4BD', '#A8BFD1', '#CCC8A3', '#8DAA8E', '#AABEC6'];
+
+  // ------------------------------------------------------------- Speicher
+  const KEY_S = 'na-zuschnitt-einstellungen', KEY_P = 'na-zuschnitt-positionen', KEY_N = 'na-zuschnitt-notizen', KEY_H = 'na-zuschnitt-haken';
+  const hash = (s) => { let h = 5381; for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) >>> 0; return h.toString(36); };
+  const laden = (k, fallback) => { try { const v = JSON.parse(localStorage.getItem(k)); return v === null || v === undefined ? fallback : v; } catch (e) { return fallback; } };
+  const sichern = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } };
+
+  const STANDARD = () => ({
+    formate: [
+      { name: 'Standardplatte (Annahme)', L: 1350, B: 600, D: 0 },
+      { name: 'Testreihe (Annahme)', L: 1200, B: 600, D: 0 },
+      { name: 'Quadratplatte', L: 975, B: 975, D: 25 }
+    ],
+    v: 2, besaeum: 10, kerf: 5, minTeil: 250, drehen: true, fugen: true, fugenAbstand: 0, restMin: 200, restTol: 0.05
+  });
+  let S = Object.assign(STANDARD(), laden(KEY_S, {}));
+  if (!(S.v >= 2)) { S.minTeil = 250; S.v = 2; }   // 21.09.2026: Mindestmaß von 100 auf 250 angehoben
+  if (!Array.isArray(S.formate) || !S.formate.length) S.formate = STANDARD().formate;
+
+  let P = laden(KEY_P, { format: 0, freiL: 1350, freiB: 600, freiD: 0, positionen: [{ name: '', L: 0, B: 0, stk: 1 }] });
+  if (!Array.isArray(P.positionen)) P.positionen = [];
+
+  // ------------------------------------------------------------- Tabs
+  const views = ['calc', 'settings', 'notes', 'log'];
+  function zeige(v) {
+    for (const x of views) { $('view-' + x).hidden = x !== v; }
+    document.querySelectorAll('nav.top button[data-view]').forEach((b) => b.classList.toggle('aktiv', b.dataset.view === v));
+    window.scrollTo(0, 0);
+  }
+  document.querySelectorAll('nav.top button[data-view]').forEach((b) => b.addEventListener('click', () => zeige(b.dataset.view)));
+  $('btnPrint').addEventListener('click', () => { zeige('calc'); setTimeout(() => window.print(), 50); });
+
+  // ------------------------------------------------------------- Einstellungen
+  function fmtZeichnen() {
+    const box = $('fmtListe');
+    box.innerHTML = '';
+    S.formate.forEach((f, i) => {
+      const z = document.createElement('div'); z.className = 'fmt-zeile';
+      z.innerHTML = `<input class="input fmt-name" type="text" value="${esc(f.name)}" placeholder="Bezeichnung" aria-label="Bezeichnung">
+        <div class="field"><input type="number" min="1" step="1" inputmode="numeric" value="${f.L || ''}" data-k="L" placeholder="Länge" aria-label="Länge"><span class="unit">mm</span></div>
+        <span class="x">×</span>
+        <div class="field"><input type="number" min="1" step="1" inputmode="numeric" value="${f.B || ''}" data-k="B" placeholder="Breite" aria-label="Breite"><span class="unit">mm</span></div>
+        <span class="x">×</span>
+        <div class="field"><input type="number" min="0" step="1" inputmode="numeric" value="${f.D || ''}" data-k="D" placeholder="Höhe" aria-label="Höhe"><span class="unit">mm</span></div>
+        <button type="button" class="del" aria-label="Format entfernen">×</button>`;
+      z.querySelector('.fmt-name').addEventListener('input', (e) => { f.name = e.target.value; sSichern(); });
+      z.querySelectorAll('[data-k]').forEach((el) => el.addEventListener('input', () => { f[el.dataset.k] = Math.max(0, Math.round(+el.value || 0)); sSichern(); }));
+      z.querySelector('.del').addEventListener('click', () => { S.formate.splice(i, 1); if (!S.formate.length) S.formate.push({ name: '', L: 1350, B: 600, D: 0 }); sSichern(); fmtZeichnen(); });
+      box.appendChild(z);
+    });
+    formatAuswahl();
+  }
+  function sFelder() {
+    $('sBesaeum').value = S.besaeum; $('sKerf').value = S.kerf; $('sMin').value = S.minTeil; $('sDrehen').checked = !!S.drehen;
+    $('sFugen').checked = !!S.fugen; $('sFugenAbstand').value = S.fugenAbstand; $('sRest').value = S.restMin; $('sTol').value = S.restTol;
+  }
+  function sSichern() {
+    const ok = sichern(KEY_S, S);
+    $('sStatus').textContent = ok ? 'Gespeichert in diesem Browser.' : 'Konnte nicht gespeichert werden, der Browser erlaubt keinen Speicher.';
+    regelnText(); spaeter();
+  }
+  const zahl = (id, k, min) => $(id).addEventListener('input', () => { S[k] = Math.max(min, Math.round(+$(id).value || 0)); sSichern(); });
+  zahl('sBesaeum', 'besaeum', 0); zahl('sKerf', 'kerf', 0); zahl('sMin', 'minTeil', 0); zahl('sFugenAbstand', 'fugenAbstand', 0); zahl('sRest', 'restMin', 1);
+  $('sTol').addEventListener('input', () => { S.restTol = Math.max(0, +$('sTol').value || 0); sSichern(); });
+  $('sDrehen').addEventListener('change', () => { S.drehen = $('sDrehen').checked; sSichern(); });
+  $('sFugen').addEventListener('change', () => { S.fugen = $('sFugen').checked; sSichern(); });
+  $('btnFmt').addEventListener('click', () => { S.formate.push({ name: '', L: 0, B: 0, D: 0 }); sSichern(); fmtZeichnen(); $('fmtListe').lastElementChild.querySelector('input').focus(); });
+  $('btnStandard').addEventListener('click', () => { if (confirm('Alle Einstellungen auf die Standardwerte zurücksetzen?')) { S = STANDARD(); sFelder(); fmtZeichnen(); sSichern(); } });
+
+  function regelnText() {
+    $('regeln').innerHTML = `Besäumung ${S.besaeum} · Zugabe ${S.kerf} · Min ${S.minTeil} · Drehen ${S.drehen ? 'ja' : 'nein'} · Fugen ${S.fugen ? 'ja' : 'nein'}${S.fugen && S.fugenAbstand ? ` (Abstand ${S.fugenAbstand})` : ''} · <a href="#" id="zuEinst">Einstellungen</a>`;
+    $('zuEinst').addEventListener('click', (e) => { e.preventDefault(); zeige('settings'); });
+  }
+
+  // ------------------------------------------------------------- Kalkulator Eingabe
+  function formatAuswahl() {
+    const sel = $('format');
+    sel.innerHTML = S.formate.map((f, i) => `<option value="${i}">${f.L} × ${f.B}${f.D ? ' × ' + f.D : ''}${f.name ? ', ' + esc(f.name) : ''}</option>`).join('') + '<option value="frei">Eigenes Maß</option>';
+    if (P.format === 'frei' || !S.formate[P.format]) P.format = P.format === 'frei' ? 'frei' : 0;
+    sel.value = String(P.format);
+    $('freiBox').hidden = P.format !== 'frei';
+    $('freiL').value = P.freiL; $('freiB').value = P.freiB; $('freiD').value = P.freiD || '';
+  }
+  $('format').addEventListener('change', () => {
+    P.format = $('format').value === 'frei' ? 'frei' : +$('format').value;
+    $('freiBox').hidden = P.format !== 'frei';
+    if (P.format === 'frei') $('freiL').focus();
+    pSichern(); render();
+  });
+  ['freiL', 'freiB', 'freiD'].forEach((id) => $(id).addEventListener('input', () => { P[id] = Math.max(0, Math.round(+$(id).value || 0)); pSichern(); spaeter(); }));
+  const pSichern = () => sichern(KEY_P, P);
+  const rohplatte = () => P.format === 'frei' ? { L: P.freiL, B: P.freiB, D: P.freiD || 0, name: '' } : S.formate[P.format] || S.formate[0];
+
+  function posZeichnen() {
+    const box = $('posliste'); box.innerHTML = '';
+    P.positionen.forEach((p, i) => {
+      const z = document.createElement('div'); z.className = 'pos'; z.style.setProperty('--farbe', PALETTE[i % PALETTE.length]);
+      z.innerHTML = `<div class="pos-kopf"><span class="chip">${i + 1}</span><input class="input" type="text" value="${esc(p.name)}" placeholder="Bezeichnung, optional" aria-label="Bezeichnung Position ${i + 1}">
+        <button type="button" class="del" aria-label="Position entfernen">×</button></div>
+        <div class="pos-mass">
+          <div class="field"><input type="number" min="1" step="1" inputmode="numeric" value="${p.L || ''}" data-k="L" placeholder="Länge" aria-label="Länge"><span class="unit">mm</span></div>
+          <span class="x">×</span>
+          <div class="field"><input type="number" min="1" step="1" inputmode="numeric" value="${p.B || ''}" data-k="B" placeholder="Breite" aria-label="Breite"><span class="unit">mm</span></div>
+          <div class="field"><input type="number" min="1" step="1" inputmode="numeric" value="${p.stk || ''}" data-k="stk" placeholder="Stück" aria-label="Stückzahl"><span class="unit">Stk</span></div>
+        </div>`;
+      z.querySelector('.pos-kopf input').addEventListener('input', (e) => { p.name = e.target.value; pSichern(); spaeter(); });
+      z.querySelectorAll('[data-k]').forEach((el) => el.addEventListener('input', () => { p[el.dataset.k] = Math.max(0, Math.round(+el.value || 0)); pSichern(); spaeter(); }));
+      z.querySelector('.del').addEventListener('click', () => { P.positionen.splice(i, 1); pSichern(); posZeichnen(); render(); });
+      box.appendChild(z);
+    });
+  }
+  $('btnPos').addEventListener('click', () => {
+    P.positionen.push({ name: '', L: 0, B: 0, stk: 1 }); pSichern(); posZeichnen();
+    $('posliste').lastElementChild.querySelector('[data-k="L"]').focus();
+  });
+  $('btnLeeren').addEventListener('click', () => { P.positionen = [{ name: '', L: 0, B: 0, stk: 1 }]; pSichern(); posZeichnen(); render(); });
+  $('btnRechnen').addEventListener('click', () => { clearTimeout(warten); render(); if (window.innerWidth <= 880) setTimeout(() => $('results').scrollIntoView({ behavior: 'smooth', block: 'start' }), 50); });
+
+  // ------------------------------------------------------------- Zeichnen
+  function massH(x1, x2, y, t) {
+    return `<g stroke="#636262" stroke-width="1"><line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}"/><line x1="${x1}" y1="${y - 5}" x2="${x1}" y2="${y + 5}"/><line x1="${x2}" y1="${y - 5}" x2="${x2}" y2="${y + 5}"/></g><text x="${(x1 + x2) / 2}" y="${y - 6}" text-anchor="middle" font-size="12" fill="#081723">${t}</text>`;
+  }
+  function massV(y1, y2, x, t) {
+    return `<g stroke="#636262" stroke-width="1"><line x1="${x}" y1="${y1}" x2="${x}" y2="${y2}"/><line x1="${x - 5}" y1="${y1}" x2="${x + 5}" y2="${y1}"/><line x1="${x - 5}" y1="${y2}" x2="${x + 5}" y2="${y2}"/></g><text transform="translate(${x - 8} ${(y1 + y2) / 2}) rotate(-90)" text-anchor="middle" font-size="12" fill="#081723">${t}</text>`;
+  }
+  const schmal = () => window.innerWidth <= 620;
+  const ZW = () => schmal() ? 400 : 760;
+  const ZPAD = () => schmal() ? 34 : 46;
+  const breite = (text, fs) => text.length * fs * .56;
+  function beschriftung(x, y, pw, ph, id, mass) {
+    if (pw < 22 || ph < 16) return '';
+    let fs = Math.max(9, Math.min(16, Math.min(pw, ph) / 3));
+    while (fs > 8 && breite(String(id), fs) > pw - 6) fs -= 1;
+    if (breite(String(id), fs) > pw - 4) return '';
+    let fm = Math.max(8, fs * .72);
+    while (fm > 7 && mass && breite(mass, fm) > pw - 6) fm -= 1;
+    const zweiZeilen = mass && ph > fs + fm + 8 && breite(mass, fm) <= pw - 6;
+    let s = `<text x="${x + pw / 2}" y="${y + ph / 2 - (zweiZeilen ? fs * .4 : 0)}" text-anchor="middle" dominant-baseline="middle" font-size="${fs}" font-weight="700" fill="#081723">${esc(id)}</text>`;
+    if (zweiZeilen) s += `<text x="${x + pw / 2}" y="${y + ph / 2 + fm * .9}" text-anchor="middle" dominant-baseline="middle" font-size="${fm}" fill="#636262">${mass}</text>`;
+    return s;
+  }
+  function svgFlaeche(zerl, L, B, farbe, ids) {
+    const pad = ZPAD(), W = ZW(), maxH = schmal() ? 300 : 400;
+    const sc = Math.min((W - 2 * pad) / L, maxH / B);
+    const w = L * sc, h = B * sc, H = h + 2 * pad, ox = (W - w) / 2, oy = pad;
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Zusammensetzung aus ${zerl.pieces.length} Teilstücken">`;
+    zerl.pieces.forEach((p, j) => {
+      const x = ox + p.x * sc, y = oy + p.y * sc, pw = p.w * sc, ph = p.h * sc;
+      s += `<rect x="${x}" y="${y}" width="${pw}" height="${ph}" fill="${farbe}" stroke="#000000" stroke-width="1.5" stroke-dasharray="6 5"/>`;
+      s += beschriftung(x, y, pw, ph, ids[j], `${fmt(p.w)} × ${fmt(p.h)}`);
+    });
+    s += `<rect x="${ox}" y="${oy}" width="${w}" height="${h}" fill="none" stroke="#081723" stroke-width="2.5"/>`;
+    s += massH(ox, ox + w, oy - 18, `${fmt(L)} mm`) + massV(oy, oy + h, ox - 18, `${fmt(B)} mm`);
+    return s + '</svg>';
+  }
+  function svgPlatte(pl, PL, PB, nr, farbe, restMin, b, BL, BB) {
+    const pad = ZPAD(), W = ZW(), maxH = schmal() ? 260 : 320;
+    const sc = Math.min((W - 2 * pad) / PL, maxH / PB);
+    const w = PL * sc, h = PB * sc, H = h + 2 * pad, ox = (W - w) / 2, oy = pad;
+    let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Schnittplan Rohplatte ${nr}">`;
+    s += `<defs><pattern id="rest${nr}" width="9" height="9" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="9" height="9" fill="#FFFFFF"/><line x1="0" y1="0" x2="0" y2="9" stroke="#CBCBCB" stroke-width="2"/></pattern></defs>`;
+    s += `<rect x="${ox}" y="${oy}" width="${w}" height="${h}" fill="url(#rest${nr})" stroke="#081723" stroke-width="2.5"/>`;
+    for (const b of (pl.reste || E.blaetter(pl.root, []))) {
+      const nutz = Math.min(b.w, b.h) >= restMin;
+      if (nutz) s += `<rect x="${ox + b.x * sc}" y="${oy + b.y * sc}" width="${b.w * sc}" height="${b.h * sc}" fill="#FFFFFF" fill-opacity=".55" stroke="#979797" stroke-width="1" stroke-dasharray="3 3"/>`;
+      const rt = `${nutz ? 'Rest' : 'Verschnitt'} ${fmt(b.w)} × ${fmt(b.h)}`;
+      const rf = schmal() ? 9 : 11;
+      if (breite(rt, rf) < b.w * sc - 6 && b.h * sc > rf + 6)
+        s += `<text x="${ox + (b.x + b.w / 2) * sc}" y="${oy + (b.y + b.h / 2) * sc}" text-anchor="middle" dominant-baseline="middle" font-size="${rf}" fill="#636262">${rt}</text>`;
+      else if (breite(rt, rf) < b.h * sc - 6 && b.w * sc > rf + 6)
+        s += `<text transform="translate(${ox + (b.x + b.w / 2) * sc} ${oy + (b.y + b.h / 2) * sc}) rotate(-90)" text-anchor="middle" dominant-baseline="middle" font-size="${rf}" fill="#636262">${rt}</text>`;
+    }
+    for (const it of pl.items) {
+      const x = ox + it.x * sc, y = oy + it.y * sc, pw = it.w * sc, ph = it.h * sc;
+      s += `<rect x="${x}" y="${y}" width="${pw}" height="${ph}" fill="${farbe(it.ref)}" stroke="#FFFFFF" stroke-width="1"/>`;
+      s += beschriftung(x, y, pw, ph, it.ref.id, `${fmt(it.w)} × ${fmt(it.h)}${it.gedreht && it.w !== it.h ? ' gedr.' : ''}`);
+    }
+    let cuts = '', nummern = '';
+    const rr = schmal() ? 7 : 9, belegt = [];
+    const frei = (x, y) => !belegt.some((p) => Math.hypot(p[0] - x, p[1] - y) < rr * 2.1);
+    pl.cuts.forEach((c, k) => {
+      let mx, my;
+      if (c.typ === 'h') {
+        cuts += `<line x1="${ox + c.x1 * sc}" y1="${oy + c.y * sc}" x2="${ox + c.x2 * sc}" y2="${oy + c.y * sc}"/>`;
+        my = oy + c.y * sc; mx = ox + c.x1 * sc;
+        const ende = ox + c.x2 * sc;
+        while (!frei(mx, my) && mx + rr * 2.2 <= ende) mx += rr * 2.2;
+      } else {
+        cuts += `<line x1="${ox + c.x * sc}" y1="${oy + c.y1 * sc}" x2="${ox + c.x * sc}" y2="${oy + c.y2 * sc}"/>`;
+        mx = ox + c.x * sc; my = oy + c.y1 * sc;
+        const ende = oy + c.y2 * sc;
+        while (!frei(mx, my) && my + rr * 2.2 <= ende) my += rr * 2.2;
+      }
+      belegt.push([mx, my]);
+      nummern += `<circle cx="${mx}" cy="${my}" r="${rr}" fill="#FAD201" stroke="#000" stroke-width="1"/><text x="${mx}" y="${my + .5}" text-anchor="middle" dominant-baseline="middle" font-size="${rr + 1}" font-weight="700" fill="#000">${k + 1}</text>`;
+    });
+    s += `<g stroke="#FFFFFF" stroke-width="3">${cuts}</g><g stroke="#000000" stroke-width="2" stroke-dasharray="6 5">${cuts}</g>${nummern}`;
+    s += massH(ox, ox + w, oy - 18, `${fmt(PL)} × ${fmt(PB)} mm${b > 0 ? ` besäumt aus ${fmt(BL)} × ${fmt(BB)}` : ''}`) + massV(oy, oy + h, ox - 18, `${fmt(PB)} mm`);
+    return s + '</svg>';
+  }
+
+  /* Spielt die Sägefolge einer Platte nach. Für jeden Schnitt: welches Stück
+     liegt an der Säge, wo wird ab dessen Kante geschnitten, was kommt heraus. */
+  function schritte(pl, PL, PB, kerf) {
+    let stuecke = [{ x1: 0, y1: 0, x2: PL, y2: PB }];
+    const out = [];
+    const teilBei = (s) => pl.items.find((it) => it.x === s.x1 && it.y === s.y1 && it.x + it.w === s.x2 && it.y + it.h === s.y2);
+    const haelt = (s) => pl.items.some((it) => it.x >= s.x1 && it.y >= s.y1 && it.x + it.w <= s.x2 && it.y + it.h <= s.y2);
+    const nenne = (s) => {
+      if (!s) return null;
+      const t = teilBei(s), w = s.x2 - s.x1, h = s.y2 - s.y1;
+      return { w, h, art: t ? 'teil' : haelt(s) ? 'weiter' : 'rest', id: t ? t.ref.id : '' };
+    };
+    pl.cuts.forEach((c, k) => {
+      const i = stuecke.findIndex((s) => c.typ === 'h' ? (s.x1 === c.x1 && s.x2 === c.x2 && c.y > s.y1 && c.y < s.y2) : (s.y1 === c.y1 && s.y2 === c.y2 && c.x > s.x1 && c.x < s.x2));
+      if (i < 0) { out.push({ nr: k + 1, fehler: true }); return; }
+      const s = stuecke.splice(i, 1)[0];
+      let a, b;
+      if (c.typ === 'h') { a = { ...s, y2: c.y }; b = c.y + kerf < s.y2 ? { ...s, y1: c.y + kerf } : null; }
+      else { a = { ...s, x2: c.x }; b = c.x + kerf < s.x2 ? { ...s, x1: c.x + kerf } : null; }
+      stuecke.push(a); if (b) stuecke.push(b);
+      out.push({ nr: k + 1, typ: c.typ, stueck: { w: s.x2 - s.x1, h: s.y2 - s.y1 },
+        ab: c.typ === 'h' ? c.y - s.y1 : c.x - s.x1, a: nenne(a), b: nenne(b) });
+    });
+    return out;
+  }
+  const stueckText = (s, restMin) => {
+    if (!s) return '<span class="rest">nur Sägeblatt</span>';
+    if (s.art === 'teil') return `<b>Teil ${esc(s.id)}</b> ${fmt(s.w)} × ${fmt(s.h)}`;
+    if (s.art === 'weiter') return `${fmt(s.w)} × ${fmt(s.h)} weiter`;
+    return `<span class="rest">${fmt(s.w)} × ${fmt(s.h)} ${Math.min(s.w, s.h) >= restMin ? 'Rest' : 'Verschnitt'}</span>`;
+  };
+
+  // ------------------------------------------------------------- Ausgabe
+  let letzteDauer = 0, warten = null;
+  const spaeter = () => { clearTimeout(warten); warten = setTimeout(render, 350); };
+  function render() {
+    if (letzteDauer > 400) {
+      $('results').innerHTML = '<p class="empty">Rechnet …</p>';
+      requestAnimationFrame(() => requestAnimationFrame(rechnen));
+      return;
+    }
+    rechnen();
+  }
+
+  function rechnen() {
+    const out = $('results');
+    const roh = rohplatte();
+    const b = Math.max(0, S.besaeum | 0);
+    const cfg = {
+      brutL: roh.L, brutB: roh.B, dicke: roh.D || 0, formatName: roh.name || '', besaeum: b,
+      // Besäumt wird rundum, an jeder Kante. Festgelegt am 21.09.2026.
+      rohL: roh.L - 2 * b, rohB: roh.B - 2 * b, kerf: S.kerf, minTeil: S.minTeil, drehen: S.drehen,
+      fugen: S.fugen, fugenAbstand: S.fugenAbstand, restMin: S.restMin, restToleranz: Math.round((S.restTol || 0) * 1e6),
+      positionen: P.positionen.map((p, i) => ({ nr: i, name: p.name, L: p.L, B: p.B, stk: p.stk }))
+    };
+    if (!(cfg.brutL > 0 && cfg.brutB > 0)) { out.innerHTML = '<p class="empty">Rohplattenmaß fehlt.</p>'; return; }
+    if (!(cfg.rohL > 0 && cfg.rohB > 0)) { out.innerHTML = `<p class="empty">Nach ${b} mm Besäumung rundum bleibt von ${fmt(cfg.brutL)} × ${fmt(cfg.brutB)} mm nichts übrig.</p>`; return; }
+    if (!cfg.positionen.some((p) => p.L > 0 && p.B > 0 && p.stk > 0)) { out.innerHTML = '<p class="empty">Länge, Breite und Stück eintragen.</p>'; return; }
+
+    let res = null, fehler = null;
+    const t0 = Date.now();
+    try { res = E.berechnenMehrere(cfg); } catch (e) { fehler = e; }
+    letzteDauer = Date.now() - t0;
+    if (fehler) { out.innerHTML = `<p class="empty">Die Rechnung ist abgebrochen. ${esc(fehler.message)}</p>`; return; }
+    if (!res || res.grund) {
+      const g = res && res.grund, nr = res && res.nr !== undefined ? res.nr + 1 : null;
+      const texte = {
+        leer: 'Keine gültige Position.',
+        zu_viele: 'Mehr als 400 Stück in einem Lauf sind zu viel. Auf mehrere Läufe aufteilen.',
+        zu_gross: `Position ${nr} ist für den Kalkulator zu groß. Er rechnet Flächen bis etwa vierzig Rohplatten je Stück. In mehrere Felder aufteilen.`,
+        ohne_fuge: `Position ${nr} passt nicht aus einer Rohplatte, und Fugen sind in den Einstellungen gesperrt.`,
+        eingabe: `Position ${nr} lässt sich aus dieser Rohplatte nicht zusammensetzen.${cfg.drehen ? '' : ' Drehen ist gesperrt, das engt den Spielraum ein.'}${cfg.minTeil > 0 ? ` Auch das Mindestmaß von ${cfg.minTeil} mm kann der Grund sein.` : ''}`
+      };
+      out.innerHTML = `<p class="empty">${texte[g] || texte.eingabe}</p>`;
+      return;
+    }
+
+    // Kennungen. Position.Stück, bei Übermaßen zusätzlich der Teilbuchstabe.
+    const infos = res.positionen;
+    const einzel = cfg.positionen.filter((p) => p.L > 0 && p.B > 0 && p.stk > 0);
+    const gueltig = einzel.map((p) => p.nr);
+    for (const pl of res.plates) for (const it of pl.items) {
+      const r = it.ref, info = infos[r.pos];
+      const basis = infos.length > 1 ? `${gueltig[r.pos] + 1}` : '';
+      const stk = info.stk > 1 ? `${basis ? '.' : ''}${r.stk}` : '';
+      const teil = info.geteilt ? String.fromCharCode(97 + Math.min(25, r.idx)) : '';
+      r.id = (basis + stk + teil) || '1';
+    }
+    res.plates.forEach((pl, i) => { pl.nr = i + 1; });
+    const farbe = (ref) => PALETTE[gueltig[ref.pos] % PALETTE.length];
+    const selbsttest = pruefen(cfg, res);
+    const planHash = hash(JSON.stringify([cfg.brutL, cfg.brutB, cfg.besaeum, cfg.restToleranz, cfg.kerf, cfg.minTeil, cfg.drehen, cfg.fugen, cfg.fugenAbstand, cfg.positionen.map((p) => [p.L, p.B, p.stk])]));
+    let H = laden(KEY_H, null);
+    if (!H || H.hash !== planHash) H = { hash: planHash, haken: {} };
+    const box = (key, text) => `<li><label><input type="checkbox" data-haken="${key}"${H.haken[key] ? ' checked' : ''}><span class="${H.haken[key] ? 'erl' : ''}">${text}</span></label></li>`;
+    const teileGesamt = res.plates.reduce((s, pl) => s + pl.items.length, 0);
+    const stkGesamt = infos.reduce((s, p) => s + p.stk, 0);
+
+    const areaBrutto = res.n * cfg.brutL * cfg.brutB;
+    const verschnitt = 1 - res.areaT / areaBrutto;
+    const jetzt = new Date().toLocaleString('de-AT', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    let html = `<div class="druckkopf"><b>Zuschnitt</b> ${jetzt} · Rohplatte ${fmt(cfg.brutL)} × ${fmt(cfg.brutB)}${cfg.dicke ? ' × ' + fmt(cfg.dicke) : ''}${cfg.formatName ? ' ' + esc(cfg.formatName) : ''}<br>${infos.map((p, i) => `Position ${gueltig[i] + 1}${p.name ? ' ' + esc(p.name) : ''}: ${fmt(p.L)} × ${fmt(p.B)}, ${p.stk} Stück`).join(' · ')}</div>`;
+    html += `<div class="kpis">
+      <div class="kpi main"><div class="v">${res.n} <small>${res.n === 1 ? 'Rohplatte' : 'Rohplatten'}</small></div>
+        <div class="k">${fmt(cfg.brutL)} × ${fmt(cfg.brutB)}${cfg.dicke ? ' × ' + fmt(cfg.dicke) : ''}</div><div class="s">${cfg.formatName ? esc(cfg.formatName) + ', ' : ''}${plural(stkGesamt, 'Stück', 'Stück')}</div></div>
+      <div class="kpi"><div class="v">${fmt(verschnitt * 100)} <small>%</small></div>
+        <div class="k">Verschnitt</div><div class="s">${m2(res.restFlaeche)} m² verwertbar</div></div>
+      <div class="kpi"><div class="v">${res.schnitte + (cfg.besaeum > 0 ? 4 * res.n : 0)} <small>Schnitte</small></div>
+        <div class="k">${plural(teileGesamt, 'Teil', 'Teile')}</div><div class="s">${cfg.besaeum > 0 ? `${4 * res.n} davon Besäumen` : ''}</div></div>
+    </div>`;
+
+    // Positionen mit Übermaß: zusammengesetzte Fläche
+    const geteilt = infos.filter((p) => p.geteilt);
+    if (geteilt.length) {
+      html += `<section class="block"><div class="rule"></div><h2>Zusammengesetzte Maße</h2>
+        <p>Buchstaben stehen im Schnittplan wieder.</p><div class="composites">`;
+      for (const p of geteilt) {
+        const nr = gueltig[infos.indexOf(p)] + 1;
+        const ids = p.zerl.pieces.map((q, j) => String.fromCharCode(97 + Math.min(25, j)));
+        html += `<div class="plate-card"><h3>Position ${nr}${p.name ? ', ' + esc(p.name) : ''}
+          <span>${fmt(p.L)} × ${fmt(p.B)} mm, ${plural(p.zerl.pieces.length, 'Teil', 'Teile')}, ${plural(p.zerl.fugen, 'Fuge', 'Fugen')}, kleinste Kante ${fmt(p.zerl.minKante)} mm</span></h3>
+          <div class="drawing">${svgFlaeche(p.zerl, p.L, p.B, PALETTE[(nr - 1) % PALETTE.length], ids)}</div></div>`;
+      }
+      html += `</div></section>`;
+    }
+
+    // Schnittplan
+    html += `<section class="block"><div class="rule"></div><h2>Schnittplan</h2>
+      <p>Nummer steht am Anfang des Schnitts. Schnittmaß gilt ab Kante des Stücks, das gerade an der Säge liegt. Teil = Position${stkGesamt > infos.length ? '.Stück' : ''}${geteilt.length ? ' + Buchstabe' : ''}.</p>
+      <div class="fortschritt"><span id="hakenText"></span><span class="bar"><i id="hakenBar"></i></span><button type="button" class="link" id="btnHaken">Abhaken zurücksetzen</button><button type="button" class="link" id="btnPrint2">Drucken</button></div><div class="plates">`;
+    for (const pl of res.plates) {
+      const genutzt = pl.items.reduce((s, it) => s + it.w * it.h, 0);
+      html += `<div class="plate-card"><h3>Rohplatte ${pl.nr}<span>${plural(pl.items.length, 'Teil', 'Teile')} · ${plural(pl.cuts.length + (cfg.besaeum > 0 ? 4 : 0), 'Schnitt', 'Schnitte')} · ${fmt(100 * genutzt / (cfg.brutL * cfg.brutB))} % genutzt</span></h3>
+        <div class="drawing">${svgPlatte(pl, cfg.rohL, cfg.rohB, pl.nr, farbe, cfg.restMin, cfg.besaeum, cfg.brutL, cfg.brutB)}</div>
+        <ul class="schritte">`;
+      if (cfg.besaeum > 0) html += box(`p${pl.nr}b`, `<b>Besäumen</b> rundum ${fmt(cfg.besaeum)} · ergibt ${fmt(cfg.rohL)} × ${fmt(cfg.rohB)}`);
+      for (const s of schritte(pl, cfg.rohL, cfg.rohB, cfg.kerf)) {
+        if (s.fehler) { html += box(`p${pl.nr}c${s.nr - 1}`, `<b>${s.nr}</b> Schnitt nicht zuordenbar, bitte melden`); continue; }
+        const text = `<b>${s.nr}</b> Stück ${fmt(s.stueck.w)} × ${fmt(s.stueck.h)} · ${s.typ === 'h' ? 'waagrecht' : 'senkrecht'} bei <b>${fmt(s.ab)}</b> ${s.typ === 'h' ? 'von oben' : 'von links'}<br><small>${s.typ === 'h' ? 'oben' : 'links'} ${stueckText(s.a, cfg.restMin)} · ${s.typ === 'h' ? 'unten' : 'rechts'} ${stueckText(s.b, cfg.restMin)}</small>`;
+        html += box(`p${pl.nr}c${s.nr - 1}`, text);
+      }
+      for (const it of pl.items) html += box(`p${pl.nr}t${it.ref.id}`, `<b>Teil ${esc(it.ref.id)}</b> ${fmt(it.w)} × ${fmt(it.h)}${it.gedreht && it.w !== it.h ? ' · gedreht' : ''}`);
+      html += `</ul></div>`;
+    }
+    html += `</div><div class="legend">${infos.map((p, i) => `<span><i style="background:${PALETTE[gueltig[i] % PALETTE.length]}"></i>Position ${gueltig[i] + 1}${p.name ? ', ' + esc(p.name) : ''}</span>`).join('')}<span><i class="rest"></i>Verschnitt</span><span><i style="border-style:dashed;border-color:#000;background:#fff"></i>Schnitt</span></div></section>`;
+
+    // Zuschnittliste
+    const nachMass = new Map();
+    for (const pl of res.plates) for (const it of pl.items) {
+      const k = `${Math.max(it.w, it.h)}x${Math.min(it.w, it.h)}`;
+      if (!nachMass.has(k)) nachMass.set(k, { w: Math.max(it.w, it.h), h: Math.min(it.w, it.h), n: 0, ids: [] });
+      const e = nachMass.get(k); e.n++; e.ids.push(it.ref.id);
+    }
+    html += `<section class="block"><div class="rule"></div><h2>Zuschnittliste</h2>
+      <div class="tablewrap"><table><thead><tr><th class="num">Stück</th><th class="num">Länge</th><th class="num">Breite</th><th class="num">Fläche</th><th>Teile</th></tr></thead><tbody>`;
+    for (const e of [...nachMass.values()].sort((a, b) => b.w * b.h - a.w * a.h))
+      html += `<tr><td class="num">${e.n} ×</td><td class="num">${fmt(e.w)}</td><td class="num">${fmt(e.h)}</td><td class="num">${m2(e.n * e.w * e.h)} m²</td><td>${e.ids.map((i) => `<span class="chip">${esc(i)}</span>`).join(' ')}</td></tr>`;
+    html += `</tbody></table></div></section>`;
+
+    // Teil für Teil
+    const zeilen = [];
+    for (const pl of res.plates) for (const it of pl.items) zeilen.push({ it, nr: pl.nr });
+    zeilen.sort((a, b) => a.it.ref.pos - b.it.ref.pos || a.it.ref.stk - b.it.ref.stk || a.it.ref.idx - b.it.ref.idx);
+    html += `<section class="block"><div class="rule"></div><h2>Teil für Teil</h2>
+      <div class="tablewrap"><table><thead><tr><th>Teil</th><th class="num">Länge</th><th class="num">Breite</th><th>Lage</th><th>Rohplatte</th><th>Position</th></tr></thead><tbody>`;
+    for (const z of zeilen) {
+      const r = z.it.ref, info = infos[r.pos];
+      html += `<tr><td><span class="chip">${esc(r.id)}</span></td><td class="num">${fmt(r.w)}</td><td class="num">${fmt(r.h)}</td>
+        <td>${fmt(z.it.x)} von links, ${fmt(z.it.y)} von oben${z.it.gedreht && z.it.w !== z.it.h ? ', gedreht' : ''}</td><td>${z.nr}</td><td>${gueltig[r.pos] + 1}${info.name ? ', ' + esc(info.name) : ''}</td></tr>`;
+    }
+    html += `</tbody></table></div></section>`;
+
+    // Reste
+    if (res.reste.length) {
+      html += `<section class="block"><div class="rule"></div><h2>Verwertbare Reste</h2>
+        <p>Ab ${cfg.restMin} mm, größte zuerst.</p>
+        <div class="tablewrap"><table><thead><tr><th class="num">Länge</th><th class="num">Breite</th><th class="num">Fläche</th><th>Rohplatte</th></tr></thead><tbody>`;
+      for (const r of res.reste) html += `<tr><td class="num">${fmt(r.w)}</td><td class="num">${fmt(r.h)}</td><td class="num">${m2(r.w * r.h)} m²</td><td>${r.platte}</td></tr>`;
+      html += `</tbody></table></div></section>`;
+    }
+
+    // Hinweise
+    const notes = [];
+    if (selbsttest.length) notes.push({ warn: true, t: 'Eigenprüfung schlägt an', p: `${esc(selbsttest[0])}. Nicht danach sägen, in den Notizen melden.` });
+    if (res.gemeinsam) notes.push({ warn: false, t: `Gemeinsam gepackt spart ${plural(res.getrenntN - res.n, 'Rohplatte', 'Rohplatten')}`, p: `Getrennt wären es ${res.getrenntN}.` });
+    else if (infos.length > 1) notes.push({ warn: false, t: 'Positionen getrennt gepackt', p: 'Gemeinsam hätte keine Platte gespart.' });
+    if (res.n > res.untereGrenze) notes.push({ warn: false, t: `Nach Fläche ${res.untereGrenze === 1 ? 'wäre 1 Platte' : `wären ${res.untereGrenze} Platten`} denkbar`, p: `Praktisch ${res.n}, weil gerade geschnitten wird.` });
+    else notes.push({ warn: false, t: 'Weniger Platten geht nicht', p: '' });
+    for (const p of infos) {
+      const nr = gueltig[infos.indexOf(p)] + 1;
+      if (p.mindestmassVerfehlt) notes.push({ warn: true, t: `Position ${nr}: Mindestmaß ${cfg.minTeil} nicht einhaltbar`, p: `Kleinste Kante ${fmt(p.zerl.minKante)} mm.` });
+      else if (p.mindestmassKostet) notes.push({ warn: true, t: `Position ${nr}: Mindestmaß kostet eine Platte`, p: `Mit schmalerem Streifen ginge es mit weniger.` });
+    }
+    for (const p of infos) {
+      if (!p.geteilt) continue;
+      const nr = gueltig[infos.indexOf(p)] + 1;
+      const passtBrutto = (p.L <= cfg.brutL && p.B <= cfg.brutB) || (cfg.drehen && p.L <= cfg.brutB && p.B <= cfg.brutL);
+      if (passtBrutto) notes.push({ warn: true, t: `Position ${nr} wird nur wegen der Besäumung geteilt`, p: `${fmt(p.L)} × ${fmt(p.B)} passt auf die Platte ${fmt(cfg.brutL)} × ${fmt(cfg.brutB)}, aber nicht auf ${fmt(cfg.rohL)} × ${fmt(cfg.rohB)} nach ${fmt(cfg.besaeum)} mm rundum. Entweder so lassen oder für dieses Maß weniger besäumen.` });
+    }
+    const unvoll = cfg.positionen.filter((p) => !(p.L > 0 && p.B > 0 && p.stk > 0) && (p.L > 0 || p.B > 0 || p.name));
+    if (unvoll.length) notes.push({ warn: true, t: `Position ${unvoll.map((p) => p.nr + 1).join(', ')} unvollständig`, p: 'Nicht gerechnet. Länge, Breite und Stück fehlen teilweise.' });
+    if (cfg.kerf === 0) notes.push({ warn: true, t: 'Schnittzugabe steht auf 0', p: 'In den Einstellungen eintragen.' });
+    if (res.plates.some((pl) => pl.items.some((i) => i.gedreht))) notes.push({ warn: false, t: 'Teile liegen gedreht', p: 'Bei Laufrichtung das Drehen in den Einstellungen sperren.' });
+    html += `<section class="block"><div class="rule"></div><h2>Hinweise</h2><div class="notes">`;
+    for (const n of notes) html += `<div class="note${n.warn ? ' warn' : ''}"><div class="t">${n.t}</div>${n.p ? `<p>${n.p}</p>` : ''}</div>`;
+    html += `</div></section>`;
+
+    html += `<details class="assump"><summary>Annahmen</summary><ul>
+      <li>Plattenformat ist Eingabe, Höhe nur Kennzeichnung. Handelsformate je Material fehlen noch.</li>
+      <li>Besäumung ${fmt(cfg.besaeum)} mm rundum, nutzbar ${fmt(cfg.rohL)} × ${fmt(cfg.rohB)}.</li>
+      <li>Nur gerade, durchgehende Schnitte, kein Stapeln.</li>
+      <li>Rangfolge: wenigste Platten, größter Rest (Toleranz ${S.restTol} m²), wenigste Schnitte.</li>
+      <li>Fugenabstand gilt als Mindestmaß aller Teile.</li>
+      <li>Reste aus früheren Aufträgen zählen nicht.</li>
+      <li>Nur die Platte, nicht Rahmen, Bezug, Rückwand.</li>
+    </ul></details>`;
+    out.innerHTML = html;
+
+    // Abhaken
+    const felder = [...out.querySelectorAll('[data-haken]')];
+    const stand = () => {
+      const n = felder.filter((f) => f.checked).length;
+      $('hakenText').textContent = `${n} von ${felder.length} Schritten erledigt`;
+      $('hakenBar').style.width = felder.length ? `${100 * n / felder.length}%` : '0';
+    };
+    felder.forEach((f) => f.addEventListener('change', () => {
+      if (f.checked) H.haken[f.dataset.haken] = true; else delete H.haken[f.dataset.haken];
+      f.nextElementSibling.className = f.checked ? 'erl' : '';
+      sichern(KEY_H, H); stand();
+    }));
+    $('btnHaken').addEventListener('click', () => { H.haken = {}; sichern(KEY_H, H); felder.forEach((f) => { f.checked = false; f.nextElementSibling.className = ''; }); stand(); });
+    stand();
+    $('btnPrint2').addEventListener('click', () => window.print());
+  }
+
+  function pruefen(cfg, res) {
+    const f = [];
+    const soll = res.positionen.reduce((s, p) => s + p.L * p.B * p.stk, 0);
+    const ist = res.plates.reduce((s, pl) => s + pl.items.reduce((t, it) => t + it.w * it.h, 0), 0);
+    if (ist !== soll) f.push(`Die Teile decken ${ist} statt ${soll} Quadratmillimeter`);
+    for (const pl of res.plates) {
+      for (const it of pl.items)
+        if (it.x < 0 || it.y < 0 || it.x + it.w > cfg.rohL || it.y + it.h > cfg.rohB) f.push('Ein Teil ragt über die Rohplatte hinaus');
+      for (let i = 0; i < pl.items.length; i++) for (let j = i + 1; j < pl.items.length; j++) {
+        const a = pl.items[i], b = pl.items[j];
+        if (a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h) f.push('Zwei Teile überschneiden sich auf einer Rohplatte');
+      }
+    }
+    if (!cfg.drehen && res.plates.some((pl) => pl.items.some((i) => i.gedreht))) f.push('Ein Teil liegt gedreht, obwohl Drehen gesperrt ist');
+    return f;
+  }
+
+  // ------------------------------------------------------------- Notizen
+  let N = laden(KEY_N, []);
+  if (!Array.isArray(N)) N = [];
+  const datum = (iso) => new Date(iso).toLocaleString('de-AT', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  function nZeichnen() {
+    const box = $('nListe');
+    if (!N.length) { box.innerHTML = '<p class="empty">Noch keine Notizen.</p>'; return; }
+    box.innerHTML = N.slice().reverse().map((n, k) => `<div class="notiz"><div class="z">${datum(n.t)} <button type="button" class="link" data-i="${N.length - 1 - k}">löschen</button></div><p>${esc(n.text)}</p></div>`).join('');
+    box.querySelectorAll('[data-i]').forEach((b) => b.addEventListener('click', () => { if (confirm('Diese Notiz löschen?')) { N.splice(+b.dataset.i, 1); sichern(KEY_N, N); nZeichnen(); } }));
+  }
+  $('btnNotiz').addEventListener('click', () => {
+    const text = $('nText').value.trim();
+    if (!text) { $('nStatus').textContent = 'Die Notiz ist leer.'; return; }
+    N.push({ t: new Date().toISOString(), text });
+    $('nStatus').textContent = sichern(KEY_N, N) ? 'Gespeichert in diesem Browser.' : 'Konnte nicht gespeichert werden.';
+    $('nText').value = ''; nZeichnen();
+  });
+  $('btnNotizKopie').addEventListener('click', async () => {
+    const text = N.map((n) => `- ${datum(n.t)}: ${n.text}`).join('\n') || 'Keine Notizen.';
+    try { await navigator.clipboard.writeText(text); $('nStatus').textContent = 'Alle Notizen kopiert.'; }
+    catch (e) { $('nText').value = text; $('nStatus').textContent = 'Kopieren nicht erlaubt, Text steht jetzt oben im Feld.'; }
+  });
+
+  // ------------------------------------------------------------- Start
+  let warSchmal = schmal();
+  window.addEventListener('resize', () => { if (schmal() !== warSchmal) { warSchmal = schmal(); spaeter(); } });
+  // Offline-Fähigkeit, nur wenn die Seite selbst gehostet ist (nicht im Claude-Viewer)
+  try { if ('serviceWorker' in navigator && location.protocol === 'https:' && !/claude/.test(location.hostname)) navigator.serviceWorker.register('./sw.js').catch(() => {}); } catch (e) {}
+  sFelder(); fmtZeichnen(); regelnText(); posZeichnen(); nZeichnen();
+  render();
+})();
+</script>
+</body></html>
